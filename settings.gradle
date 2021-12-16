@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'client'
-include('app')
+include('client-app')
