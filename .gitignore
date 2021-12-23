@@ -6,9 +6,9 @@ build
 
 # Ignore IDE specific files
 
-# General
+#   General
 .classpath
 
-# IDE
+#   Eclipse
 .project
 .settings
