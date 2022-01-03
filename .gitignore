@@ -12,3 +12,6 @@ build
 #   Eclipse
 .project
 .settings
+
+#   IntelliJ
+.idea
