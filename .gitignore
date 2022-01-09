@@ -8,6 +8,7 @@ build
 
 #   General
 .classpath
+client-app/latest.log
 
 #   Eclipse
 .project
