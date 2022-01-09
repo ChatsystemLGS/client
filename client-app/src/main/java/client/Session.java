@@ -1,6 +1,9 @@
 package client;
 
-public class Session {
+import server.protocol.Protocol;
+import server.protocol.ProtocolException;
+
+public class Session implements Protocol {
 
     private final Client client;
 
