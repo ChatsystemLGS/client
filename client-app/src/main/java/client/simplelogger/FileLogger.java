@@ -1,11 +1,11 @@
-package server.simplelogger;
+package client.simplelogger;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import server.simplelogger.SimpleLogger.LogLevel;
+import client.simplelogger.SimpleLogger.LogLevel;
 
 public class FileLogger extends BasicLogger implements AutoCloseable {
 

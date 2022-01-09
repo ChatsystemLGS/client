@@ -1,10 +1,10 @@
-package server.simplelogger;
+package client.simplelogger;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import server.simplelogger.SimpleLogger.LogLevel;
-import server.simplelogger.SimpleLogger.LogListener;
+import client.simplelogger.SimpleLogger.LogLevel;
+import client.simplelogger.SimpleLogger.LogListener;
 
 public abstract class BasicLogger implements LogListener {
 
