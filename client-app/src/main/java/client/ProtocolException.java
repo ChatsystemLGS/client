@@ -1,8 +1,8 @@
-package client.protocol;
+package client;
 
 import java.sql.Date;
 
-import server.db.Message;
+import client.db.Message;
 
 public abstract class ProtocolException extends Exception {
 
@@ -219,3 +219,4 @@ public abstract class ProtocolException extends Exception {
 		}
 
 	}
+}
