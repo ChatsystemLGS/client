@@ -11,7 +11,7 @@ public class Client {
 
     public final Config CFG;
 
-    Client(Config cfg) throws IOException {
+    Client(Config cfg) {
         CFG = cfg;
 
         try {
@@ -21,6 +21,8 @@ public class Client {
             e.printStackTrace();
         } catch (UnknownHostException e) {
             e.printStackTrace();
-        }
+        } catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 }
