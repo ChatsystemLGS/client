@@ -35,11 +35,11 @@ public class ServerHandler implements Runnable {
 
             while (session.getState() != Session.State.DISCONNECTED) {
 
-                if (readLine().equalsIgnoreCase("INVALID_PARAMETER 1")) {
-                    session.disconnect();
-                } else {
-                    writeLine("LOGIN mirko.leon.weih@lgs-hu.eu mWe1h_1234");
-                }
+                // if (readLine().equalsIgnoreCase("INVALID_PARAMETER 1")) {
+                //     session.disconnect();
+                // } else {
+                //     writeLine("LOGIN mirko.leon.weih@lgs-hu.eu mWe1h_1234");
+                // }
             }
         } catch (NoSuchElementException e) {
             session.disconnect();
