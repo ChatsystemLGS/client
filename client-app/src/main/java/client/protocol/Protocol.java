@@ -2,36 +2,46 @@ package client.protocol;
 
 public interface Protocol {
 
+	static final String PROTOCOL_VERSION = "0.0.0";
+
+	void register(String email, String nickname, String password)
+			throws InternalServerErrorException, EmailAlreadyRegisteredException, PasswordRequirementNotMetException;
+
+	void login(String email, String password) throws InternalServerErrorException, EmailNotRegisteredException, PasswordInvalidException;
+
+	Channel[] getPublicGroups();
+
+	void joinGroup(int channelId) throws ChannelNotFoundException;
+
+	Channel[] getChannels();
+
+	User[] getChannelMembers(int channelId) throws NotMemberOfChannelException;
+
+	User getUser(int userId) throws UserNotFoundException;
+
+	User getUser(String email) throws UserNotFoundException;
+
+	void addFriend(int userId) throws UserNotFoundException;
+
+	void addFriend(String email) throws UserNotFoundException;
+
+	User[] getFriends();
+
+	void sendMessage(int channelId, String data, DataType dataType)
+			throws NotMemberOfChannelException, MessageTooLongException;
+
+	int createDm(int userId) throws UserNotFoundException, DmAlreadyExistsException;
+
+	Message[] receiveMessages(int channelId, Date tFrom, Date tUntil)
+			throws NotMemberOfChannelException, TooManyMessagesException;
+
+	void quit();
+
 	enum State {
 
 		CONNECTED(null),
 		AUTHENTICATED(State.CONNECTED),
 		DISCONNECTED(State.CONNECTED);
-
-		private final State parentState;
-
-		State(State parentState) {
-			this.parentState = parentState;
-		}
-
-		// returns parent State or null if it is the default State
-		public State getParentState() {
-			return parentState;
-		}
-
-		public boolean hasParent(State state) {
-
-			if (state == null)
-				throw new IllegalArgumentException();
-
-			if (parentState == null)
-				return false;
-
-			if (parentState == state)
-				return true;
-			else
-				return parentState.hasParent(state);
-		}
 
 	}
 
