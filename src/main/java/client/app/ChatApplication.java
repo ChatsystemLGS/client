@@ -19,11 +19,11 @@ public class ChatApplication extends Application {
 
     private Client client;
 
-    @SuppressWarnings("all")
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ChatApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ChatApplication.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        // scene.getStylesheets().add(getClass().getResource("style.css").toString());
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();

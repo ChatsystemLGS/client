@@ -123,6 +123,7 @@ public abstract class ProtocolException extends Exception {
 
 	}
 
+	
 	public static class TooManyMessagesException extends ProtocolException {
 
 		/**
