@@ -17,13 +17,13 @@ public class SignInController {
     private void openMainScreen(ActionEvent event){
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("client.app.fxml"));
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("sample.fxml"));
             Stage stage = new Stage();
             stage.setTitle("Home");
             Scene scene = new Scene(root);
             stage.initStyle(StageStyle.TRANSPARENT);
             scene.setFill(Color.TRANSPARENT);
-            scene.getStylesheets().add("resources/style.css");
+            scene.getStylesheets().add("style.css");
             stage.setScene(scene);
             stage.show();
             // Hide this current window (if this is what you want)

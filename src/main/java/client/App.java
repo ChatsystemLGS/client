@@ -11,6 +11,7 @@ import javafx.stage.StageStyle;
 import java.io.File;
 import java.io.IOException;
 
+import client.config.Config;
 import client.simplelogger.ConsoleLogger;
 import client.simplelogger.FileLogger;
 import client.simplelogger.SimpleLogger;
@@ -23,12 +24,12 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Main.fxml"));
         primaryStage.setTitle("Chat");
         Scene scene = new Scene(root);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
-        scene.getStylesheets().add("resources/style.css");
+        scene.getStylesheets().add("style.css");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -48,9 +49,9 @@ public class App extends Application {
             e.printStackTrace();
         }
 
-		// new Client(Config.getDefaultConfig());
+		new Client(Config.getDefaultConfig());
 
-        launch();
+        // launch();
     }
 
     // contructor is not allowed here

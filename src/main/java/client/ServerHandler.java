@@ -32,16 +32,17 @@ public class ServerHandler implements Runnable {
     public void run() {
         try {
             // TODO: implement sending commands to the server
-            // String email = "mirko.leon.weih@lgs-hu.eu";
-            // String password = "mWe1h_1234";
-            // String email = "bWlya28ubGVvbi53ZWloQGxncy1odS5ldQ==";
-            // String password = "bVdlMWhfMTIzNA==";
+            // LOGIN bWlya28ubGVvbi53ZWloQGxncy1odS5ldQ== bVdlMWhfMTIzNA==
+
+            if (session.getState() != Session.State.DISCONNECTED) {
+                checkProtocolVersion(readLine());
+            }
 
             while (session.getState() != Session.State.DISCONNECTED) { // implement keep alive? 
                 // writeLine(String.format("LOGIN %1$s %2$s", email, password));
                 handle(readLine());
-                // session.disconnect();
             }
+
         } catch (NoSuchElementException e) {
             session.disconnect();
         } finally {
@@ -54,25 +55,24 @@ public class ServerHandler implements Runnable {
         }
     }
 
+    public void sendCommand(String command) {
+        try {
 
-    // public void sendCommand(String command) {
-    //     try {
+            if (session.getState() != Session.State.DISCONNECTED) {
+                writeLine(command);
+            }
 
-    //         while (session.getState() != Session.State.DISCONNECTED) {
-    //             writeLine(command);
-    //         }
-
-    //     } catch (NoSuchElementException e) {
-    //         session.disconnect();
-    //     } finally {
-    //         try {
-    //             server.close();
-    //             SimpleLogger.logf(LogLevel.DEBUG, "%s", session.getState());
-    //         } catch (IOException e) {
-    //             e.printStackTrace();
-    //         }
-    //     }
-    // }
+        } catch (NoSuchElementException e) {
+            session.disconnect();
+        } finally {
+            try {
+                server.close();
+                SimpleLogger.logf(LogLevel.DEBUG, "%s", session.getState());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     private String readLine() {
 		String line = s.nextLine();
@@ -90,8 +90,15 @@ public class ServerHandler implements Runnable {
         // new ServerHandler(server, client);
 	}
 
+    private void checkProtocolVersion(String response) {
+        if (response.equalsIgnoreCase("OK " + session.PROTOCOL_VERSION)) {
+            System.out.println("Matching protocol version");
+        } else if (response.split(" ")[0].equalsIgnoreCase("OK")) {
+            System.out.println("Deprecated Protocol Version! Update to Version: " + response.split(" ")[1]);
+        }
+    }
+
     public static void handle(String response) {
         
     }
-
 }

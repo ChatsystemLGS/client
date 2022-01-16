@@ -1,13 +1,19 @@
 package client;
 
+import java.sql.Timestamp;
+
+import javax.net.ssl.SSLSession;
+
 import client.ProtocolException.Status;
+import client.db.Channel;
+import client.db.Message;
 import client.db.TransmittableObject;
 import client.db.User;
 
-
+@SuppressWarnings("all")
 public class Session {
 
-	static final String PROTOCOL_VERSION = "0.0.0";
+	public final String PROTOCOL_VERSION = "0.0.0";
 
     private final Client client;
 
@@ -139,5 +145,66 @@ public class Session {
 		}
 
 	}
+
+	// Commands
+
+	private void register(String emailAddress, String password, String nickname) {
+		
+    }
+
+	private void login(String emailAddress, String password) {
+        
+    }
+
+    private Channel[] getPublicGroups() {
+		Channel[] publicGroups = null;
+		return publicGroups;
+    }
+
+    private void joinGroup(int channelID) {
+
+    }
+
+    private Channel[] getChannels() {
+		Channel[] channels = null;
+		return channels;
+    }
+
+    private User[] getChannelMembers(int channelID) {
+		User[] users = null;
+		return users;
+    }
+
+    private User getUser(int userID, String emailAddress) {
+		User user = null;
+		return user;
+    }
+
+    private void addFriend(int userID) {
+
+    }
+
+    private User[] getFriends() {
+		User[] users = null;
+		return users;
+    }
+
+    private void sendMessage(int channelID, Byte[] data, Enum dataType) {
+
+    }
+
+    private Channel createDM(int userID) {
+		Channel channel = null;
+		return channel;
+    }
+
+    private Message[] recieveMessages(int channelID, Timestamp tFrom, Timestamp tUntil) {
+		Message[] messages = null;
+		return messages;
+    }
+
+    private void quit() {
+        disconnect();
+    }
 
 }
