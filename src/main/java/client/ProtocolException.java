@@ -1,8 +1,8 @@
-package client.app;
+package client;
 
 import java.sql.Date;
 
-import client.app.db.Message;
+import client.db.Message;
 
 public abstract class ProtocolException extends Exception {
 

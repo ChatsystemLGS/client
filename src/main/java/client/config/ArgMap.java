@@ -1,4 +1,4 @@
-package client.app.config;
+package client.config;
 // package client.app.config;
 
 // import java.util.HashMap;

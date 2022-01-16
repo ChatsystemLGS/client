@@ -1,4 +1,4 @@
-package client.app.db;
+package client.db;
 
 import java.util.Arrays;
 import java.util.Base64;

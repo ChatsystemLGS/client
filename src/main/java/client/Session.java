@@ -1,8 +1,8 @@
-package client.app;
+package client;
 
-import client.app.ProtocolException.Status;
-import client.app.db.TransmittableObject;
-import client.app.db.User;
+import client.ProtocolException.Status;
+import client.db.TransmittableObject;
+import client.db.User;
 
 
 public class Session {
@@ -108,11 +108,19 @@ public class Session {
 
 	enum Command {
 
-		REGISTER(State.CONNECTED, 3), LOGIN(State.CONNECTED, 2), GETPUBLICGROUPS(State.AUTHENTICATED, 0),
-		JOINGROUP(State.AUTHENTICATED, 1), GETCHANNELS(State.AUTHENTICATED, 0),
-		GETCHANNELMEMBERS(State.AUTHENTICATED, 1), GETUSER(State.AUTHENTICATED, 1), ADDFRIEND(State.AUTHENTICATED, 1),
-		GETFRIENDS(State.AUTHENTICATED, 0), SENDMESSAGE(State.AUTHENTICATED, 3), CREATEDM(State.AUTHENTICATED, 1),
-		RECEIVEMESSAGES(State.AUTHENTICATED, 3), QUIT(State.CONNECTED, 0);
+		REGISTER(State.CONNECTED, 3), 
+		LOGIN(State.CONNECTED, 2), 
+		GETPUBLICGROUPS(State.AUTHENTICATED, 0),
+		JOINGROUP(State.AUTHENTICATED, 1), 
+		GETCHANNELS(State.AUTHENTICATED, 0),
+		GETCHANNELMEMBERS(State.AUTHENTICATED, 1), 
+		GETUSER(State.AUTHENTICATED, 1), 
+		ADDFRIEND(State.AUTHENTICATED, 1),
+		GETFRIENDS(State.AUTHENTICATED, 0), 
+		SENDMESSAGE(State.AUTHENTICATED, 3),
+		CREATEDM(State.AUTHENTICATED, 1),
+		RECEIVEMESSAGES(State.AUTHENTICATED, 3), 
+		QUIT(State.CONNECTED, 0);
 
 		private final State requiredState;
 		private final int numArgs;

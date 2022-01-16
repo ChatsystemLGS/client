@@ -1,4 +1,4 @@
-package client.app.db;
+package client.db;
 
 import java.sql.Timestamp;
 

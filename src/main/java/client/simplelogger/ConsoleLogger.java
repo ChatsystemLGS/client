@@ -1,6 +1,6 @@
-package client.app.simplelogger;
+package client.simplelogger;
 
-import client.app.simplelogger.SimpleLogger.LogLevel;
+import client.simplelogger.SimpleLogger.LogLevel;
 
 public class ConsoleLogger extends BasicLogger {
 

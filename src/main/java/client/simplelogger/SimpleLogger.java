@@ -1,4 +1,4 @@
-package client.app.simplelogger;
+package client.simplelogger;
 
 import java.util.HashSet;
 import java.util.Locale;

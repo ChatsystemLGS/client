@@ -1,11 +1,9 @@
-package client.app.simplelogger;
+package client.simplelogger;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
-import client.app.simplelogger.SimpleLogger.LogLevel;
 
 public class FileLogger extends BasicLogger implements AutoCloseable {
 
@@ -25,22 +23,22 @@ public class FileLogger extends BasicLogger implements AutoCloseable {
 		bw = initBufferedWriter(logType);
 	}
 
-	public FileLogger(File logFile, LogLevel logLevel) throws IllegalArgumentException, IOException {
+	public FileLogger(File logFile, SimpleLogger.LogLevel logLevel) throws IllegalArgumentException, IOException {
 		this(logFile, DEFAULT_LOG_TYPE, logLevel);
 	}
 
-	public FileLogger(File logFile, LogType logType, LogLevel logLevel) throws IllegalArgumentException, IOException {
+	public FileLogger(File logFile, LogType logType, SimpleLogger.LogLevel logLevel) throws IllegalArgumentException, IOException {
 		super(logLevel);
 		this.logFile = logFile;
 
 		bw = initBufferedWriter(logType);
 	}
 
-	public FileLogger(File logFile, LogLevel logLevel, String dateFormat) throws IllegalArgumentException, IOException {
+	public FileLogger(File logFile, SimpleLogger.LogLevel logLevel, String dateFormat) throws IllegalArgumentException, IOException {
 		this(logFile, DEFAULT_LOG_TYPE);
 	}
 
-	public FileLogger(File logFile, LogType logType, LogLevel logLevel, String dateFormat)
+	public FileLogger(File logFile, LogType logType, SimpleLogger.LogLevel logLevel, String dateFormat)
 			throws IllegalArgumentException, IOException {
 		super(logLevel, dateFormat);
 		this.logFile = logFile;

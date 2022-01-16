@@ -1,8 +1,4 @@
-package client.app.db;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
+package client.db;
 
 public class User extends TransmittableObject {
 
@@ -16,17 +12,17 @@ public class User extends TransmittableObject {
 		registerAttributes(id, emailAddress, nickname, note, type);
 	}
 
-	private String hashPassword(String password) {
-		MessageDigest md = null;
+	// private String hashPassword(String password) {
+	// 	MessageDigest md = null;
 
-		try {
-			md = MessageDigest.getInstance("SHA-512");
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
+	// 	try {
+	// 		md = MessageDigest.getInstance("SHA-512");
+	// 	} catch (NoSuchAlgorithmException e) {
+	// 		e.printStackTrace();
+	// 	}
 
-		return Base64.getEncoder().encodeToString(md.digest(password.getBytes()));
-	}
+	// 	return Base64.getEncoder().encodeToString(md.digest(password.getBytes()));
+	// }
 
 	public User withId(int id) {
 		this.id.set(id);

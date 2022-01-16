@@ -1,4 +1,4 @@
-package client.app.config;
+package client.config;
 
 import java.io.File;
 
@@ -41,12 +41,12 @@ public class Config {
 	}
 
 	public static Config loadCfg(File f) {
-		// TODO
+		// TODO: implement load from file
 		return null;
 	}
 
 	public static void WriteCfg(File f, Config cfg) {
-		// TODO
+		// TODO: implement write to file
 	}
 
 }

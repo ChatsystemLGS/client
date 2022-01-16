@@ -1,4 +1,4 @@
-package client.app;
+package client;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -6,9 +6,8 @@ import java.net.Socket;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import client.app.simplelogger.SimpleLogger;
-import client.app.simplelogger.SimpleLogger.LogLevel;
-import client.app.db.TransmittableObject;
+import client.simplelogger.SimpleLogger;
+import client.simplelogger.SimpleLogger.LogLevel;
 
 public class ServerHandler implements Runnable {
 
@@ -35,13 +34,13 @@ public class ServerHandler implements Runnable {
             // TODO: implement sending commands to the server
             // String email = "mirko.leon.weih@lgs-hu.eu";
             // String password = "mWe1h_1234";
-            String email = "bWlya28ubGVvbi53ZWloQGxncy1odS5ldQ==";
-            String password = "bVdlMWhfMTIzNA==";
+            // String email = "bWlya28ubGVvbi53ZWloQGxncy1odS5ldQ==";
+            // String password = "bVdlMWhfMTIzNA==";
 
-            while (session.getState() != Session.State.DISCONNECTED) {
-                writeLine(String.format("LOGIN %1$s %2$s", email, password));
-                readLine();
-                session.disconnect();
+            while (session.getState() != Session.State.DISCONNECTED) { // implement keep alive? 
+                // writeLine(String.format("LOGIN %1$s %2$s", email, password));
+                handle(readLine());
+                // session.disconnect();
             }
         } catch (NoSuchElementException e) {
             session.disconnect();
@@ -90,5 +89,9 @@ public class ServerHandler implements Runnable {
 		new Thread(new ServerHandler(server, client)).start();
         // new ServerHandler(server, client);
 	}
+
+    public static void handle(String response) {
+        
+    }
 
 }

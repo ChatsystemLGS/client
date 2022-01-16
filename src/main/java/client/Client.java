@@ -1,11 +1,11 @@
-package client.app;
+package client;
 
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
-import client.app.config.Config;
+import client.config.Config;
 
 public class Client {
 
