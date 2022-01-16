@@ -23,8 +23,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'client.app'
-    mainClass = 'client.app.ChatApplication'
+    mainModule = 'client'
+    mainClass = 'client.App'
 }
 
 javafx {

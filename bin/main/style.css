@@ -1,0 +1,77 @@
+.root{
+    -fx-background-color: rgba(39,39,39,0.5);
+}
+.borderStyle{
+   -fx-border-style: none solid;
+
+}
+.searchContainer{
+ -fx-background-color: rgba(39,39,39,0.3);
+ -fx-background-radius: 20px;
+}
+.searchUser{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+#sidePane{
+    -fx-border-style: hidden solid solid solid;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+}
+#hbox_sidePane{
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+
+}
+
+#selectedUserChat{
+    -fx-border-style: hidden solid solid solid;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+}
+.chatLabel{
+    -fx-background-width: 200;
+    -fx-background-height: 50;
+    -fx-background-color: rgb(219,219,219);
+    -fx-background-radius: 20;
+    -fx-text-fill: rgb(0,0,0);
+}
+
+
+
+/* Login and Signup CSS */
+.parent{
+    -fx-background-color: transparent;
+}
+.pane{
+   -fx-background-color: rgba(0,0,0,0.5);
+}
+.trans-btn-white-border{
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-text-fill: whitesmoke;
+}
+.white-pane{
+    -fx-background-color: white;
+}
+.blue-panel{
+    -fx-background-color: rgb(66, 70, 74);
+}
+.tf_box{
+    -fx-background-color: transparent;
+    -fx-border-color: #DEDEE4;
+    -fx-border-width: 0px 0px 1px 0px;
+}
+.tf{
+    -fx-background-color: transparent;
+}
+.blue-btn{
+    -fx-background-color: #2196f3;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+

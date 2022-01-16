@@ -7,6 +7,6 @@ module client.app {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
 
-    opens client.app to javafx.fxml;
-    exports client.app;
+    opens client to javafx.fxml;
+    exports client;
 }
