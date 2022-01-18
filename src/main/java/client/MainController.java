@@ -18,6 +18,7 @@ public class MainController implements Initializable {
     @FXML
     private VBox vbox;    
     private Parent fxml;
+
     @Override
 //    we are implementing Initializable Interface here, so that as soon as modal loads up that will run
     public void initialize(URL url, ResourceBundle rb) {
@@ -26,7 +27,7 @@ public class MainController implements Initializable {
         t.play();
         t.setOnFinished((e) ->{
             try{
-                fxml = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
+                fxml = FXMLLoader.load(getClass().getClassLoader().getResource("SignIn.fxml"));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             }catch(IOException ex){
@@ -34,6 +35,7 @@ public class MainController implements Initializable {
             }
         });
     }
+
     @FXML
     private void SignIn_Modal(ActionEvent event){
           TranslateTransition t = new TranslateTransition(Duration.seconds(1), vbox);
@@ -41,14 +43,15 @@ public class MainController implements Initializable {
         t.play();
         t.setOnFinished((e) ->{
             try{
-                fxml = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
+                fxml = FXMLLoader.load(getClass().getClassLoader().getResource("SignIn.fxml"));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             }catch(IOException ex){
                 
             }
         });
-    }   
+    }
+
     @FXML
     private void SignUp_Modal(ActionEvent event){
           TranslateTransition t = new TranslateTransition(Duration.seconds(1), vbox);
@@ -56,7 +59,7 @@ public class MainController implements Initializable {
         t.play();
         t.setOnFinished((e) ->{
             try{
-                fxml = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
+                fxml = FXMLLoader.load(getClass().getClassLoader().getResource("SignUp.fxml"));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             }catch(IOException ex){

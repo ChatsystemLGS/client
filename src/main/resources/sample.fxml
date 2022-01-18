@@ -17,7 +17,7 @@
                 <HBox fx:id="hbox_sidePane" alignment="CENTER_LEFT" prefHeight="135.0" prefWidth="309.0" spacing="10.0" stylesheets="@../style.css">
                     <children>
                         <Circle fx:id="userProfile" fill="DODGERBLUE" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Label text="John Belford" textFill="WHITE">
+                        <Label text="Mirko" textFill="WHITE">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
@@ -63,11 +63,11 @@
                                 <Circle fx:id="userProfile1" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                                 <VBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="178.0">
                                     <children>
-                                        <Label text="Marry" textFill="WHITE">
+                                        <Label text="Cobalt" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="16.0" />
                                  </font></Label>
-                                        <Label text="Lorem Ipsum Donu Jackie Nazima" textFill="WHITE">
+                                        <Label text="loading ..." textFill="WHITE">
                                  <font>
                                     <Font name="Consolas" size="14.0" />
                                  </font></Label>
@@ -92,12 +92,12 @@
                         <Circle fx:id="userProfile2" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                         <VBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="178.0">
                            <children>
-                              <Label text="Peter" textFill="WHITE">
+                              <Label text="Felix" textFill="WHITE">
                                  <font>
                                     <Font name="Comic Sans MS Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <Label text="Lorem Ipsum Donu Jackie Nazima" textFill="WHITE">
+                              <Label text="loading ..." textFill="WHITE">
                                  <font>
                                     <Font name="Berlin Sans FB" size="14.0" />
                                  </font>
@@ -123,12 +123,12 @@
                         <Circle fx:id="userProfile3" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                         <VBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="178.0">
                            <children>
-                              <Label text="Tony" textFill="WHITE">
+                              <Label text="IT BG13" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <Label text="Lorem Ipsum Donu Jackie Nazima" textFill="WHITE">
+                              <Label text="loading ..." textFill="WHITE">
                                  <font>
                                     <Font name="Berlin Sans FB" size="14.0" />
                                  </font>
@@ -154,12 +154,12 @@
                         <Circle fx:id="userProfile4" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                         <VBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="178.0">
                            <children>
-                              <Label text="MJ" textFill="WHITE">
+                              <Label text="Jaro" textFill="WHITE">
                                  <font>
                                     <Font name="Comic Sans MS Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <Label text="Lorem Ipsum Donu Jackie Nazima" textFill="WHITE">
+                              <Label text="loading ..." textFill="WHITE">
                                  <font>
                                     <Font name="Berlin Sans FB" size="14.0" />
                                  </font>
@@ -182,12 +182,12 @@
                         <Circle fx:id="userProfile5" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                         <VBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="178.0">
                            <children>
-                              <Label text="Lea" textFill="WHITE">
+                              <Label text="BG 13" textFill="WHITE">
                                  <font>
                                     <Font name="Comic Sans MS Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <Label text="Lorem Ipsum Donu Jackie Nazima" textFill="WHITE">
+                              <Label text="loading ..." textFill="WHITE">
                                  <font>
                                     <Font name="Consolas" size="14.0" />
                                  </font>
@@ -214,7 +214,7 @@
                 <HBox fx:id="selectedUserChat" alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="699.0" spacing="10.0" stylesheets="@../style.css">
                     <children>
                         <Circle fx:id="userSelectedProfile" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Label text="Mary" textFill="WHITE">
+                        <Label text="Mirko" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font></Label>
@@ -249,7 +249,7 @@
                                 <Circle fx:id="userProfile7" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                         <VBox prefHeight="58.0" prefWidth="251.0" styleClass="chatLabel" stylesheets="@../style.css">
                            <children>
-                                      <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../style.css" text="I am coming in a while" textFill="WHITE">
+                                      <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../style.css" text="Hallo Mirko. Hast du heute schon irgendwas für informatik gemacht?" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -282,7 +282,7 @@
                      <children>
                         <VBox prefHeight="58.0" prefWidth="251.0" styleClass="chatLabel" stylesheets="@../style.css">
                            <children>
-                              <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../style.css" text="Sure. I will come too" textFill="WHITE">
+                              <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../style.css" text="nee, bin grad in der Kirche.. Du kennst mich doch" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -314,7 +314,7 @@
                         <Circle fx:id="userProfile9" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                         <VBox prefHeight="58.0" prefWidth="251.0" styleClass="chatLabel" stylesheets="@../style.css">
                            <children>
-                              <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../style.css" text="Please Bring Laptop too" textFill="WHITE">
+                              <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../style.css" text="Mirco, können wir morgen Abend zu dir in den Garten?" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -344,7 +344,7 @@
                      <children>
                         <VBox prefHeight="58.0" prefWidth="251.0" styleClass="chatLabel" stylesheets="@../style.css">
                            <children>
-                              <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../style.css" text="Ok I will" textFill="WHITE">
+                              <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../style.css" text="Ja klar, wie jeder weiß bin ich ja sehr gastfreundlich. Aber die dekopauschale beträgt natürlich wie gewohnt 5€" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

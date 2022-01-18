@@ -45,7 +45,7 @@ public class ServerHandler implements Runnable {
 
             while (session.getState() != Session.State.DISCONNECTED) { // implement keep alive? 
                 // writeLine(String.format("LOGIN %1$s %2$s", email, password));
-                handle(readLine());
+                // handle(readLine());
             }
 
         } catch (NoSuchElementException e) {
@@ -101,10 +101,6 @@ public class ServerHandler implements Runnable {
         } else if (response.split(" ")[0].equalsIgnoreCase("OK")) {
             System.out.println("Deprecated Protocol Version! Update to Version: " + response.split(" ")[1]);
         }
-    }
-
-    public static void handle(String response) {
-        
     }
 
     public String toBase64(String s) {

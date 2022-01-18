@@ -26,8 +26,8 @@ public class SignInController {
             scene.getStylesheets().add("style.css");
             stage.setScene(scene);
             stage.show();
-            // Hide this current window (if this is what you want)
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            // Hide this current window
+            // ((Node)(event.getSource())).getScene().getWindow().hide();
         }
         catch (IOException e) {
             e.printStackTrace();

@@ -51,7 +51,7 @@ public class App extends Application {
 
 		new Client(Config.getDefaultConfig());
 
-        // launch();
+        launch();
     }
 
     // contructor is not allowed here

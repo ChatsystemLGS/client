@@ -31,6 +31,12 @@ public class Controller implements Initializable {
     @FXML private Circle userProfile10;
     @FXML private Circle userSelectedProfile;
 
+    // @FXML
+    // public void createProfile(Object image) {
+    //     Circle userProfile = new Circle();
+    //     userProfile.setFill(new Imagepattern(image));
+    // }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Image image = new Image("resources/profile.png");
@@ -39,7 +45,7 @@ public class Controller implements Initializable {
         userProfile.setOnMouseClicked(e->{
             Parent root;
             try {
-                root = FXMLLoader.load(getClass().getClassLoader().getResource("userInfo.fxml"));
+                root = FXMLLoader.load(getClass().getResource("userInfo.fxml"));
                 Stage stage = new Stage();
                 stage.setTitle("Profile");
                 Scene scene = new Scene(root);
