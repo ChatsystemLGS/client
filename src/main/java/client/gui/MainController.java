@@ -1,4 +1,4 @@
-package client;
+package client.gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,7 +32,7 @@ public class MainController implements Initializable {
         t.play();
         t.setOnFinished((e) ->{
             try{
-                fxml = FXMLLoader.load(getClass().getResource("/SignIn.fxml"));
+                fxml = FXMLLoader.load(getClass().getResource("/scenes/SignIn.fxml"));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             }catch(IOException ex){
@@ -49,7 +49,7 @@ public class MainController implements Initializable {
         t.play();
         t.setOnFinished((e) ->{
             try{
-                fxml = FXMLLoader.load(getClass().getResource("/SignIn.fxml"));
+                fxml = FXMLLoader.load(getClass().getResource("/scenes/SignIn.fxml"));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             }catch(IOException ex){
@@ -66,7 +66,7 @@ public class MainController implements Initializable {
         t.play();
         t.setOnFinished((e) ->{
             try{
-                fxml = FXMLLoader.load(getClass().getResource("/SignUp.fxml"));
+                fxml = FXMLLoader.load(getClass().getResource("/scenes/SignUp.fxml"));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             }catch(IOException ex){

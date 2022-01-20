@@ -1,4 +1,4 @@
-package client;
+package client.gui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,7 +39,7 @@ public class UserInfoController implements Initializable {
         back.setOnMouseClicked(e->{
             Parent root = null;
             try {
-                root = FXMLLoader.load(getClass().getResource("/ChatScreen.fxml"));
+                root = FXMLLoader.load(getClass().getResource("/scenes/ChatScreen.fxml"));
             } catch (IOException exception) {
                 exception.printStackTrace();
             }

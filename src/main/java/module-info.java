@@ -11,4 +11,7 @@ module client.app {
 
     opens client to javafx.fxml;
     exports client;
+
+    opens client.gui to javafx.fxml;
+    exports client.gui;
 }

@@ -3,7 +3,7 @@ this class represents Users List
 support functionalities to add user and get list of all users
 
  */
-package client;
+package client.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +19,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class SignInController {
 
@@ -41,7 +40,7 @@ public class SignInController {
         try {
             Alert a = new Alert(Alert.AlertType.ERROR);
             if(login()){ //if user is not authenticated, we will show alert else main Screen
-                fxml = FXMLLoader.load(getClass().getResource("/ChatScreen.fxml"));
+                fxml = FXMLLoader.load(getClass().getResource("/scenes/ChatScreen.fxml"));
                 Stage stage = new Stage();
                 stage.setTitle("Home");
                 Scene scene = new Scene(fxml);

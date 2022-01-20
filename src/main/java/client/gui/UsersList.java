@@ -1,6 +1,7 @@
-package client;
+package client.gui;
 
 import javax.swing.*;
+
 import java.util.ArrayList;
 
 

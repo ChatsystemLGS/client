@@ -1,5 +1,5 @@
 
-package client;
+package client.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -65,7 +65,7 @@ public class SignupController {
 
 
                 //now show login Screen to user
-                fxml = FXMLLoader.load(getClass().getResource("/Main.fxml"));
+                fxml = FXMLLoader.load(getClass().getResource("/scenes/Main.fxml"));
                 Stage stage = new Stage();
                 stage.setTitle("Home");
                 Scene scene = new Scene(fxml);

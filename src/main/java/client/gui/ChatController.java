@@ -1,4 +1,4 @@
-package client;
+package client.gui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,7 +62,7 @@ public class ChatController implements Initializable {
         userProfile.setOnMouseClicked(e->{
             Parent root;
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/userInfo.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/scenes/userInfo.fxml"));
                 root = loader.load();
 
                 //we are sending profile data as arguments to controller

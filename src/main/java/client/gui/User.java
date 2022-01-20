@@ -5,7 +5,7 @@ This class overrides equals method, in order to check wheter user having
 same email already exists or not.
 
  */
-package client;
+package client.gui;
 
 import java.util.Objects;
 
