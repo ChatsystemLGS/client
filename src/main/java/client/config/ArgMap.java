@@ -8,7 +8,7 @@ package client.config;
 // 	HashMap<String, String> argMap = new HashMap<>();
 
 // 	public ArgMap(String args[]) {
-
+		
 // 		for (int i = 0; i < args.length; i++) {
 // 			String[] arg = args[i].split("=", 2);
 // 			if (arg[0].contentEquals(""))
@@ -18,9 +18,9 @@ package client.config;
 
 // 			argMap.put(arg[0], arg[1]);
 // 		}
-
+		
 // 	}
-
+	
 // 	public String getString(String key, String defaultValue) {
 
 // 		String value = argMap.get(key);
