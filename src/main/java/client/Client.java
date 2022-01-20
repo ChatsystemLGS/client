@@ -9,6 +9,7 @@ import client.config.Config;
 
 public class Client {
 
+    @SuppressWarnings("all")
     public final Config CFG;
 
     Client(Config cfg) {
@@ -16,13 +17,13 @@ public class Client {
 
         try {
             Socket server = new Socket(cfg.ADDRESS, cfg.PORT);
-            ServerHandler.createClient(server, this);
+            ServerHandler.createClient(server, this); // TODO: alternative
         } catch (SocketException e) {
             e.printStackTrace();
         } catch (UnknownHostException e) {
             e.printStackTrace();
         } catch (IOException e) {
-			e.printStackTrace();
-		}
+            e.printStackTrace();
+        }
     }
 }

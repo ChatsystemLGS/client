@@ -43,7 +43,7 @@ public class ChatController implements Initializable {
     private UsersList users = new UsersList();
     DateFormat dateFormat = new SimpleDateFormat("hh.mm aa");
     private String userProfileImage = "/6.jpg"; // TODO: get image from db
-    
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -54,12 +54,12 @@ public class ChatController implements Initializable {
         userSelectedProfile.setFill(new ImagePattern(new Image(users.getUsers().get(0).getUserProfileImage())));
 
         //dynamically populating users on screen
-        for(User user: users.getUsers()){
+        for (User user : users.getUsers()) {
             scrollPane_inner.getChildren().add(createCard(user.getUserName(), "Message", user.getUserProfileImage()));
-       }
+        }
 
         //adding action listener on User Image
-        userProfile.setOnMouseClicked(e->{
+        userProfile.setOnMouseClicked(e -> {
             Parent root;
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/userInfo.fxml"));
@@ -76,21 +76,20 @@ public class ChatController implements Initializable {
                 root.getStylesheets().add("style.css");
                 stage.setScene(scene);
                 stage.show();
-                ((Node)(e.getSource())).getScene().getWindow().hide();
-            }
-            catch (IOException exception) {
+                ((Node) (e.getSource())).getScene().getWindow().hide();
+            } catch (IOException exception) {
                 exception.printStackTrace();
             }
         });
 
         // adding action listener for msg Field
         // msg will be send by pressing enter key
-        msgField.setOnKeyPressed( event -> {
-            if( event.getCode() == KeyCode.ENTER ) {
+        msgField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
                 msgContainer.getChildren().add(msgCard());
                 msgField.setText("");
             }
-        } );
+        });
 
 
     }
@@ -99,11 +98,11 @@ public class ChatController implements Initializable {
     private HBox msgCard() {
         HBox hbox = new HBox();
         hbox.setAlignment(Pos.TOP_LEFT);
-        hbox.setPadding(new Insets(5,0,0,5));
+        hbox.setPadding(new Insets(5, 0, 0, 5));
         hbox.setSpacing(10);
 
         VBox vbox = new VBox();
-        vbox.setPadding(new Insets(20,20,20,20));
+        vbox.setPadding(new Insets(20, 20, 20, 20));
         vbox.getStyleClass().add("chatLabel");
         vbox.setAlignment(Pos.TOP_LEFT);
 
@@ -119,7 +118,7 @@ public class ChatController implements Initializable {
         timeLabel.setFont(new Font("Arial", 12));
         timeLabel.setTextFill(Color.BLACK);
         timeLabel.setContentDisplay(ContentDisplay.RIGHT);
-        timeLabel.setPadding(new Insets(5,0,0,50));
+        timeLabel.setPadding(new Insets(5, 0, 0, 50));
         timeLabel.setAlignment(Pos.CENTER_RIGHT);
         vbox.getChildren().addAll(msg, timeLabel);
         hbox.getChildren().addAll(userIcon, vbox);
@@ -128,21 +127,21 @@ public class ChatController implements Initializable {
 
 
     //this helper function will create user Card, which shows on left panel of screen
-    private HBox createCard(String un, String lc, String img){
+    private HBox createCard(String un, String lc, String img) {
         HBox userCard = new HBox();
 
         //styling user card
         userCard.setAlignment(Pos.CENTER_LEFT);
         userCard.setPrefSize(261, 61);
         userCard.setMaxSize(261, 61);
-        VBox.setMargin(userCard, new Insets(5,0,5,0));
-        userCard.setPadding(new Insets(0,20,0,20));
+        VBox.setMargin(userCard, new Insets(5, 0, 5, 0));
+        userCard.setPadding(new Insets(0, 20, 0, 20));
 
         Circle profileImage = new Circle(25);
         profileImage.setFill(new ImagePattern(new Image(img)));
 
         //now we will add action listener to handle clicks on user Card
-        userCard.setOnMouseClicked(e->{
+        userCard.setOnMouseClicked(e -> {
             userSelectedProfile.setFill(new ImagePattern(new Image(img)));
             selectedUserName.setText(un);
             msgContainer.getChildren().removeAll();
@@ -151,13 +150,13 @@ public class ChatController implements Initializable {
 
         VBox vbox = new VBox();
         vbox.setAlignment(Pos.CENTER_LEFT);
-        vbox.setPadding(new Insets(0,0,0,10));
-        vbox.setPrefSize(178,61);
+        vbox.setPadding(new Insets(0, 0, 0, 10));
+        vbox.setPrefSize(178, 61);
 
         Label userName = new Label(un);
         userName.setFont(new Font("Arial", 16));
         userName.setTextFill(Color.WHITE);
-        
+
         Label lastChat = new Label(lc);
         vbox.getChildren().addAll(userName, lastChat);
         userCard.getChildren().addAll(profileImage, vbox);

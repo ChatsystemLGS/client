@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon; //* not an error if displayed so
 
 public class UserInfoController implements Initializable {
 
@@ -29,14 +29,14 @@ public class UserInfoController implements Initializable {
     @FXML private TextField userName;
     @FXML private TextField userEmail;
     @FXML private TextField userPassword;
-    @FXML private FontAwesomeIcon back;
+    @FXML private FontAwesomeIcon back; //* not an error if displayed so
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         //setting event on  back button
-        back.setOnMouseClicked(e->{
+        back.setOnMouseClicked(e->{ //* not an error if displayed so
             Parent root = null;
             try {
                 root = FXMLLoader.load(getClass().getResource("/ChatScreen.fxml"));

@@ -12,7 +12,7 @@ public class UsersList {
     private ArrayList<User> users;
 
     //constructor
-    public UsersList(){
+    public UsersList() {
         users = new ArrayList<>();
 
         // TODO: get users info from db
@@ -37,16 +37,14 @@ public class UsersList {
 
     //behaviours
     //you can add new users in list using this method
-    public void addUser(String userName, String userEmail, String userPassword, String userProfileImage){
-        if(this.users==null){
+    public void addUser(String userName, String userEmail, String userPassword, String userProfileImage) {
+        if (this.users == null) {
             System.out.println("Please Initialize Array List");
-        }
-        else{
+        } else {
             User newUser = new User(userName, userEmail, userPassword, userProfileImage);
-            if(!exists(newUser)){
+            if (!exists(newUser)) {
                 users.add(new User(userName, userEmail, userPassword, userProfileImage));
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Nutzer existiert bereits");
             }
 
@@ -54,14 +52,14 @@ public class UsersList {
     }
 
     //method overrided
-    public void addUser(User user){
+    public void addUser(User user) {
         this.users.add(user);
     }
 
     //this method will return true if user exists, else it will return false
-    public boolean exists(User user){
-        for(int i=0; i<users.size(); i++){
-            if(users.get(i).equals(user)) return true;
+    public boolean exists(User user) {
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).equals(user)) return true;
         }
         return false;
     }
