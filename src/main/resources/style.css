@@ -1,6 +1,13 @@
 .root{
-    -fx-background-color: rgba(39,39,39,0.5);
+    -fx-background-color: rgb(46, 46, 46);    
 }
+
+.background {
+    -fx-background-image: url("background.jpg"); /* TODO: fix */
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
 .borderStyle{
    -fx-border-style: none solid;
 
@@ -35,9 +42,16 @@
     -fx-background-height: 50;
     -fx-background-color: rgb(219,219,219);
     -fx-background-radius: 20;
-    -fx-text-fill: rgb(0,0,0);
+    -fx-text-fill: black;
 }
+.scroll-pane {
+   -fx-background: transparent;
+  -fx-background-color: transparent;
+}
+.scroll-bar:vertical {
+  -fx-background-color: transparent;
 
+}
 
 
 /* Login and Signup CSS */

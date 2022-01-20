@@ -6,6 +6,8 @@ module client.app {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
+    requires java.desktop;
+    requires fontawesomefx;
 
     opens client to javafx.fxml;
     exports client;

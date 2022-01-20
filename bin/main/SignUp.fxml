@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="480.0" styleClass="blue-panel" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.PasswordField?>
+<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="480.0" styleClass="blue-panel" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.SignupController">
    <children>
       <Label text="Sign Up" textFill="#2196f3">
          <font>
@@ -21,7 +22,7 @@
       </Label>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
          <children>
-            <TextField promptText="Full Name" styleClass="tf_box" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="userName" promptText="Full Name" style="-fx-text-fill: white;" styleClass="tf_box" HBox.hgrow="ALWAYS" />
             <FontAwesomeIcon fill="WHITE" glyphName="USER" size="2em" />
          </children>
          <VBox.margin>
@@ -30,7 +31,7 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
          <children>
-            <TextField promptText="Email" styleClass="tf_box" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="userEmail" promptText="Email" style="-fx-text-fill: white;" styleClass="tf_box" HBox.hgrow="ALWAYS" />
             <FontAwesomeIcon fill="WHITE" glyphName="USER" size="2em" />
          </children>
          <VBox.margin>
@@ -39,14 +40,22 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
          <children>
-            <TextField promptText="Password" styleClass="tf_box" HBox.hgrow="ALWAYS" />
+            <PasswordField fx:id="userPassword" promptText="Password" style="-fx-text-fill: white;" styleClass="tf_box" HBox.hgrow="ALWAYS" />
             <FontAwesomeIcon fill="WHITE" glyphName="LOCK" size="2em" />
          </children>
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="20.0" />
          </VBox.margin>
       </HBox>
-      <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="456.0" styleClass="blue-btn" text="Sign Up" textFill="WHITE">
+      <Button mnemonicParsing="false" onAction="#chooseProfilePicture" prefHeight="38.0" prefWidth="456.0" styleClass="blue-btn" text="Choose Profile Picture" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="-10.0" left="15.0" right="15.0" top="10.0" />
+         </VBox.margin>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#signup" prefHeight="38.0" prefWidth="456.0" styleClass="blue-btn" text="Sign Up" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>

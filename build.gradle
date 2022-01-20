@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
+    id 'org.openjfx.javafxplugin' version '0.0.7'
 }
 
 group 'client'
@@ -24,15 +24,12 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'client'
-    mainClass = 'client.App'
-}
-
-javafx {
-    version = '16'
-    modules = ['javafx.controls', 'javafx.fxml']
+    mainClass = 'client.Main'
 }
 
 dependencies {
+    // testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation files('lib\\fontawesomefx-8.2.jar')
     implementation('org.controlsfx:controlsfx:11.1.1')
     implementation('com.dlsc.formsfx:formsfx-core:11.4.2') {
         exclude(group: 'org.openjfx')
@@ -41,7 +38,13 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
 }
+
+javafx{
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+mainClassName = 'client.App'
 
 test {
     useJUnitPlatform()
