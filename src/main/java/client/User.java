@@ -17,7 +17,7 @@ public class User {
     private String userProfileImage = "/tony.jpg"; // TODO: image from db
 
     //constructor
-    public User(String userName, String userEmail, String userPassword, String userProfileImage) { // TODO: some
+    public User(String userName, String userEmail, String userPassword, String userProfileImage){ // TODO: some
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
