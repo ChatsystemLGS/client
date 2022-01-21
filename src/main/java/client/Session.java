@@ -1,19 +1,11 @@
 package client;
 
-import java.sql.Timestamp;
-
-import javax.net.ssl.SSLSession;
-
-import client.ProtocolException.Status;
-import client.db.Channel;
-import client.db.Message;
-import client.db.TransmittableObject;
 import client.db.User;
 
 @SuppressWarnings("all")
 public class Session {
 
-	public final String PROTOCOL_VERSION = "0.0.0";
+	public final static String PROTOCOL_VERSION = "0.0.0";
 
     private final Client client;
 
@@ -24,50 +16,6 @@ public class Session {
 		this.client = client;
 		state = State.CONNECTED;
 	}
-    
-	public static void execute(String command) {
-		System.out.println("execute");
-	}
-
-	private String response(Status status, Object obj, TransmittableObject object, TransmittableObject[] objectList) {
-
-		String s = status.toString();
-
-		if (obj != null)
-			s += " " + obj.toString();
-
-		if (object != null)
-			s += " " + object.transmittableString();
-
-		if (objectList != null)
-			s += " " + TransmittableObject.toString(objectList);
-
-		return s;
-	}
-
-	private String response(Status status, Object retVal1, TransmittableObject[] retVal2) {
-		return response(status, retVal1, null, retVal2);
-	}
-
-	private String response(TransmittableObject retVal) {
-		return response(Status.OK, null, retVal, null);
-	}
-
-	private String response(Status status, Object retVal) {
-		return response(status, retVal, null, null);
-	}
-
-	private String response(Status status) {
-		return response(status, null, null, null);
-	}
-
-	private String response(TransmittableObject[] retVal) {
-		return response(Status.OK, null, null, retVal);
-	}
-
-	private String response() {
-		return response(Status.OK);
-	}
 
 	public void disconnect() {
 		state = State.DISCONNECTED;
@@ -77,13 +25,11 @@ public class Session {
 		return state;
 	}
 
-	public String greet() {
-		return response(Status.OK, PROTOCOL_VERSION);
-	}
-
 	enum State {
 
-		CONNECTED(null), AUTHENTICATED(State.CONNECTED), DISCONNECTED(State.CONNECTED);
+		CONNECTED(null),
+		AUTHENTICATED(State.CONNECTED),
+		DISCONNECTED(State.CONNECTED);
 
 		private final State parentState;
 

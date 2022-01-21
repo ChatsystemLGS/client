@@ -1,4 +1,4 @@
-package client.config;
+package client;
 
 import java.io.File;
 
