@@ -1,8 +1,8 @@
 package client;
 
-import java.sql.Date;
-
 import client.db.Message;
+
+import java.sql.Date;
 
 public abstract class ProtocolException extends Exception {
 
@@ -18,6 +18,46 @@ public abstract class ProtocolException extends Exception {
 
 	public Status getStatus() {
 		return status;
+	}
+
+	public static ProtocolException getException(String response) {
+		return new UnknownException(response);
+	}
+
+	public static class UnknownException extends ProtocolException {
+
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = -432928437762596614L;
+
+		public UnknownException(String response) {
+			super(Status.UNKNOWN_EXCEPTION);
+		}
+	}
+
+	public static class ProtocolVersionMismatchException extends ProtocolException {
+
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = -8555814451693659465L;
+
+		public ProtocolVersionMismatchException(String serverVersion, String clientVersion) {
+			super(Status.DEPRECATED_PROTOCOL_VERSION);
+		}
+	}
+
+	public static class ParseException extends ProtocolException {
+
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = 8485084790158847325L;
+
+		public ParseException() {
+			super(Status.UNABLE_TO_PARSE);
+		}
 	}
 
 	public static class InvalidParameterException extends ProtocolException {
@@ -212,7 +252,7 @@ public abstract class ProtocolException extends Exception {
 		OK, NOT_ENOUGH_PARAMETERS, TOO_MANY_PARAMETERS, INVALID_PARAMETER, COMMAND_NOT_FOUND, INTERNAL_SERVER_ERROR,
 		AUTHENTICATION_REQUIRED, EMAIL_ALREADY_REGISTERED, PASSWORD_REQ_NOT_MET, EMAIL_NOT_REGISTERED, PASSWORD_INVALID,
 		NOT_MEMBER_OF_CHANNEL, MESSAGE_TOO_LONG, TOO_MANY_MESSAGES, CHANNEL_NOT_FOUND, USER_NOT_FOUND,
-		DM_ALREADY_EXISTS;
+		DM_ALREADY_EXISTS, UNABLE_TO_PARSE, DEPRECATED_PROTOCOL_VERSION, UNKNOWN_EXCEPTION;
 
 		@Override
 		public String toString() {
