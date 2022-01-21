@@ -1,29 +1,28 @@
 package client;
 
+import client.interfaces.GuiInterface;
+import client.simplelogger.SimpleLogger;
+import client.simplelogger.SimpleLogger.LogLevel;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.Socket;
 import java.sql.Timestamp;
 import java.util.Base64;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import client.db.Channel;
-import client.db.Message;
-import client.db.User;
-import client.simplelogger.SimpleLogger;
-import client.simplelogger.SimpleLogger.LogLevel;
-
 @SuppressWarnings("all")
-public class ServerHandler implements Runnable {
+public class ServerHandler implements Runnable, GuiInterface {
 
+    public static ServerHandler sh;
     Socket server;
+    Session session;
     Scanner s;
     PrintWriter pw;
 
-    Session session;
-
-    private ServerHandler(Socket server, Client client) throws IOException {
+    ServerHandler(Socket server, Client client) throws IOException, ProtocolException {
         this.server = server;
 
         s = new Scanner(server.getInputStream());
@@ -31,23 +30,34 @@ public class ServerHandler implements Runnable {
 
         session = new Session(client);
 
-        SimpleLogger.logf(LogLevel.DEBUG, "%s", session.getState());
+        // SimpleLogger.logf(LogLevel.DEBUG, "%s", session.getState());
+
+        String response = readLine();
+        String[] greeting = response.split(" ");
+
+        if (greeting.length != 2)
+            throw new ProtocolException.UnknownException(response);
+
+        String status = greeting[0];
+        String version = greeting[1];
+
+        if (!status.contentEquals("OK"))
+            throw ProtocolException.getException(response);
+
+        if (!version.contentEquals(Session.PROTOCOL_VERSION))
+            throw new ProtocolException.ProtocolVersionMismatchException(version, Session.PROTOCOL_VERSION);
+
+        SimpleLogger.logf(LogLevel.INFO, "connected to server [%s]:%s (%s)", server.getInetAddress(), server.getPort(),
+                version);
     }
 
     @Override
     public void run() {
         try {
-            // LOGIN bWlya28ubGVvbi53ZWloQGxncy1odS5ldQ== bVdlMWhfMTIzNA==
-
-            if (session.getState() != Session.State.DISCONNECTED) {
-                checkProtocolVersion(readLine());
+            while (session.getState() != Session.State.DISCONNECTED) {
+                // keeps connection alive
+                // TODO: maybe better way to keep alive?? @lixo
             }
-
-            while (session.getState() != Session.State.DISCONNECTED) { // implement keep alive? 
-                // writeLine(String.format("LOGIN %1$s %2$s", email, password));
-                // handle(readLine());
-            }
-
         } catch (NoSuchElementException e) {
             session.disconnect();
         } finally {
@@ -60,111 +70,116 @@ public class ServerHandler implements Runnable {
         }
     }
 
-    public void sendCommand(String command) {
-        try {
-
-            if (session.getState() != Session.State.DISCONNECTED) {
-                writeLine(command);
-            }
-
-        } catch (NoSuchElementException e) {
-            session.disconnect();
-        } finally {
-            try {
-                server.close();
-                SimpleLogger.logf(LogLevel.DEBUG, "%s", session.getState());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private String readLine() {
+    public String readLine() {
 		String line = s.nextLine();
 		SimpleLogger.logf(LogLevel.DEBUG, "server: > %s", line);
 		return line;
 	}
 
-	private void writeLine(String line) {
+	public void writeLine(String line) {
 		SimpleLogger.logf(LogLevel.DEBUG, "server: < %s", line);
 		pw.println(line);
 	}
 
-    public static void createClient(Socket server, Client client) throws IOException {
-		new Thread(new ServerHandler(server, client)).start();
+    public static void createClient(Socket server, Client client) throws IOException, ProtocolException {
+		sh = new ServerHandler(server, client);
+        new Thread(sh).start();
         // new ServerHandler(server, client);
 	}
 
-    private void checkProtocolVersion(String response) {
-        if (response.equalsIgnoreCase("OK " + session.PROTOCOL_VERSION)) {
-            System.out.println("Matching protocol version");
-        } else if (response.split(" ")[0].equalsIgnoreCase("OK")) {
-            System.out.println("Deprecated Protocol Version! Update to Version: " + response.split(" ")[1]);
+    private String execute(Session.Command cmd, Object... parameters) throws ProtocolException {
+
+        StringBuilder sb = new StringBuilder(cmd.toString());
+
+        for (Object param : parameters) {
+            sb.append(" ");
+            if (param instanceof String)
+                sb.append(toBase64String(((String) param).getBytes()));
+            else if (param instanceof Timestamp)
+                sb.append(((Timestamp) param).getTime());
+            else if (param instanceof byte[])
+                sb.append(toBase64String((byte[]) param));
+            else
+                sb.append(param);
         }
+
+        writeLine(sb.toString());
+
+        String rawResponse = readLine();
+        String[] response = rawResponse.split(" ");
+
+        if (response.length == 0)
+            throw ProtocolException.getException(rawResponse);
+
+        if (!response[0].contentEquals("OK"))
+            throw ProtocolException.getException(rawResponse);
+
+        if (response.length > 1)
+            return rawResponse;// String.join(" ", Arrays.copyOfRange(response, 1, response.length));
+
+        return "";
     }
 
-    public String toBase64(String s) {
-        return Base64.getEncoder().encodeToString(s.getBytes());
-    }
+    //* Commands
 
-    // Commands
-
-	private void register(String emailAddress, String password, String nickname) {
-		sendCommand(String.format("REGISTER %s %s %s", toBase64(emailAddress), toBase64(password), toBase64(nickname)));
-    }
-
-	private void login(String emailAddress, String password) {
-        sendCommand(String.format("LOGIN %s %s", toBase64(emailAddress), toBase64(password)));
-    }
-
-    private Channel[] getPublicGroups() {
-		Channel[] publicGroups = null;
-		return publicGroups;
-    }
-
-    private void joinGroup(int channelID) {
-
-    }
-
-    private Channel[] getChannels() {
-		Channel[] channels = null;
-		return channels;
-    }
-
-    private User[] getChannelMembers(int channelID) {
-		User[] users = null;
-		return users;
-    }
-
-    private User getUser(int userID, String emailAddress) {
-		User user = null;
-		return user;
-    }
-
-    private void addFriend(int userID) {
+    @Override
+    public void register(String emailAddress, String password, String nickname) {
 
     }
 
-    private User[] getFriends() {
-		User[] users = null;
-		return users;
+    // mirko.leon.weih@lgs-hu.eu
+    // mWe1h_1234
+    @Override
+    public boolean login(String emailAddress, String password) throws ProtocolException {
+        String response = execute(Session.Command.LOGIN, emailAddress, password);
+
+        try {
+            return response.split(" ")[0].contentEquals("OK") ? true : false;
+        } catch (Exception e) {
+            return false;
+        }
+        // return execute(Session.Command.LOGIN, emailAddress, password).split(" ")[0].contentEquals("OK") ? true : false;
     }
 
-    private void sendMessage(int channelID, Byte[] data, Enum dataType) {
+    @Override
+    public void joinGroup(int channelID) {
 
     }
 
-    private Channel createDM(int userID) {
-		Channel channel = null;
-		return channel;
+    @Override
+    public void addFriend(int userID) {
+
     }
 
-    private Message[] recieveMessages(int channelID, Timestamp tFrom, Timestamp tUntil) {
-		Message[] messages = null;
-		return messages;
+    @Override
+    public void sendMessage(int channelID, Byte[] data, Enum dataType) {
+
     }
 
-    private void quit() {
-        session.disconnect();
+    @Override
+    public void quit() {
+
+    }
+
+    // encoding
+
+    private String toBase64String(byte[] data) {
+        return Base64.getEncoder().encodeToString(data);
+    }
+
+    private byte[] fromBase64String(String data) {
+        return Base64.getDecoder().decode((data).getBytes());
+    }
+
+    private String base64toString(String data) {
+        if (data.contentEquals("-"))
+            return "";
+        if (data.contentEquals("null"))
+            return null;
+        try {
+            return new String(fromBase64String(data), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
