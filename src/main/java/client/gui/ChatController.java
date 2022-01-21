@@ -73,7 +73,7 @@ public class ChatController implements Initializable {
                 Scene scene = new Scene(root);
                 stage.initStyle(StageStyle.TRANSPARENT);
                 scene.setFill(Color.TRANSPARENT);
-                root.getStylesheets().add("style.css");
+                try { scene.getStylesheets().add("style.css"); } catch (Exception ignored) {} // TODO: figure out why
                 stage.setScene(scene);
                 stage.show();
                 ((Node)(e.getSource())).getScene().getWindow().hide();
