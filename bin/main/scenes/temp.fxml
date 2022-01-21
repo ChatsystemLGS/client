@@ -13,9 +13,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.ChatController">
     <children>
-        <VBox fx:id="sidePane" prefHeight="600.0" prefWidth="303.0" spacing="10.0" styleClass="borderStyle" stylesheets="@../resources/style.css">
+        <VBox fx:id="sidePane" prefHeight="600.0" prefWidth="303.0" spacing="10.0" styleClass="borderStyle" stylesheets="@../style.css">
             <children>
-                <HBox fx:id="hbox_sidePane" alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="301.0" spacing="10.0" stylesheets="@../resources/style.css">
+                <HBox fx:id="hbox_sidePane" alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="301.0" spacing="10.0" stylesheets="@../style.css">
                     <children>
                         <Circle fx:id="userProfile" fill="DODGERBLUE" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
                         <Label text="John Belford" textFill="WHITE">
@@ -38,14 +38,14 @@
                         <Insets left="10.0" />
                     </padding>
                 </HBox>
-                <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="499.0" prefWidth="304.0" stylesheets="@../resources/style.css">
+                <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="499.0" prefWidth="304.0" stylesheets="@../style.css">
                     <content>
                         <VBox fx:id="scrollPane_inner" prefHeight="498.0" prefWidth="302.0">
                             <children>
-                                <HBox fx:id="searchContainer" alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="257.0" styleClass="searchContainer" stylesheets="@../resources/style.css">
+                                <HBox fx:id="searchContainer" alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="257.0" styleClass="searchContainer" stylesheets="@../style.css">
                                     <children>
                                         <FontAwesomeIcon fx:id="searchIcon" fill="#ffffff4d" glyphName="SEARCH" size="1.5em" />
-                                        <TextField fx:id="searchUser" prefHeight="24.0" prefWidth="181.0" promptText="Search" styleClass="searchUser" stylesheets="@../resources/style.css">
+                                        <TextField fx:id="searchUser" prefHeight="24.0" prefWidth="181.0" promptText="Search" styleClass="searchUser" stylesheets="@../style.css">
                                             <font>
                                                 <Font name="Arial" size="18.0" />
                                             </font>
@@ -218,7 +218,7 @@
         </VBox>
         <VBox layoutX="302.0" layoutY="-1.0" prefHeight="600.0" prefWidth="699.0">
             <children>
-                <HBox fx:id="selectedUserChat" alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="699.0" spacing="10.0" stylesheets="@../resources/style.css">
+                <HBox fx:id="selectedUserChat" alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="699.0" spacing="10.0" stylesheets="@../style.css">
                     <children>
                         <Circle fx:id="userSelectedProfile" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                         <Label text="Mary" textFill="WHITE">
@@ -226,10 +226,10 @@
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Label>
-                        <HBox alignment="CENTER" prefHeight="51.0" prefWidth="256.0" styleClass="searchContainer" stylesheets="@../resources/style.css">
+                        <HBox alignment="CENTER" prefHeight="51.0" prefWidth="256.0" styleClass="searchContainer" stylesheets="@../style.css">
                             <children>
                                 <FontAwesomeIcon fx:id="searchIcon1" fill="#ffffff4d" glyphName="SEARCH" size="1.5em" />
-                                <TextField promptText="Search" style="-fx-background-radius: 15;" styleClass="searchUser" stylesheets="@../resources/style.css">
+                                <TextField promptText="Search" style="-fx-background-radius: 15;" styleClass="searchUser" stylesheets="@../style.css">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
@@ -252,14 +252,14 @@
                 </HBox>
                 <ScrollPane prefHeight="438.0" prefWidth="697.0">
                     <content>
-                        <VBox prefHeight="437.0" prefWidth="679.0" stylesheets="@../resources/style.css">
+                        <VBox prefHeight="437.0" prefWidth="679.0" stylesheets="@../style.css">
                             <children>
                                 <HBox prefHeight="57.0" prefWidth="397.0" spacing="10.0">
                                     <children>
                                         <Circle fx:id="userProfile7" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                                        <VBox prefHeight="58.0" prefWidth="251.0" styleClass="chatLabel" stylesheets="@../resources/style.css">
+                                        <VBox prefHeight="58.0" prefWidth="251.0" styleClass="chatLabel" stylesheets="@../style.css">
                                             <children>
-                                                <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../resources/style.css" text="I am coming in a while" textFill="WHITE">
+                                                <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../style.css" text="I am coming in a while" textFill="WHITE">
                                                     <font>
                                                         <Font size="16.0" />
                                                     </font>
@@ -290,9 +290,9 @@
                                 </HBox>
                                 <HBox alignment="TOP_RIGHT" prefHeight="57.0" prefWidth="397.0" spacing="10.0">
                                     <children>
-                                        <VBox prefHeight="58.0" prefWidth="251.0" styleClass="chatLabel" stylesheets="@../resources/style.css">
+                                        <VBox prefHeight="58.0" prefWidth="251.0" styleClass="chatLabel" stylesheets="@../style.css">
                                             <children>
-                                                <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../resources/style.css" text="Sure. I will come too" textFill="WHITE">
+                                                <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../style.css" text="Sure. I will come too" textFill="WHITE">
                                                     <font>
                                                         <Font size="16.0" />
                                                     </font>
@@ -322,9 +322,9 @@
                                 <HBox prefHeight="57.0" prefWidth="397.0" spacing="10.0">
                                     <children>
                                         <Circle fx:id="userProfile9" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                                        <VBox prefHeight="58.0" prefWidth="251.0" styleClass="chatLabel" stylesheets="@../resources/style.css">
+                                        <VBox prefHeight="58.0" prefWidth="251.0" styleClass="chatLabel" stylesheets="@../style.css">
                                             <children>
-                                                <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../resources/style.css" text="Please Bring Laptop too" textFill="WHITE">
+                                                <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../style.css" text="Please Bring Laptop too" textFill="WHITE">
                                                     <font>
                                                         <Font size="16.0" />
                                                     </font>
@@ -352,9 +352,9 @@
                                 </HBox>
                                 <HBox alignment="TOP_RIGHT" prefHeight="57.0" prefWidth="397.0" spacing="10.0">
                                     <children>
-                                        <VBox prefHeight="58.0" prefWidth="251.0" styleClass="chatLabel" stylesheets="@../resources/style.css">
+                                        <VBox prefHeight="58.0" prefWidth="251.0" styleClass="chatLabel" stylesheets="@../style.css">
                                             <children>
-                                                <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../resources/style.css" text="Ok I will" textFill="WHITE">
+                                                <Label prefHeight="40.0" prefWidth="215.0" styleClass="chatLabel" stylesheets="@../style.css" text="Ok I will" textFill="WHITE">
                                                     <font>
                                                         <Font size="16.0" />
                                                     </font>
@@ -388,9 +388,9 @@
                         </VBox>
                     </content>
                 </ScrollPane>
-                <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="697.0" spacing="10.0" styleClass="searchContainer" stylesheets="@../resources/style.css">
+                <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="697.0" spacing="10.0" styleClass="searchContainer" stylesheets="@../style.css">
                     <children>
-                        <TextField alignment="CENTER" prefHeight="50.0" prefWidth="592.0" promptText="Write Here" style="-fx-background-radius: 15;" styleClass="searchUser" stylesheets="@../resources/style.css">
+                        <TextField alignment="CENTER" prefHeight="50.0" prefWidth="592.0" promptText="Write Here" style="-fx-background-radius: 15;" styleClass="searchUser" stylesheets="@../style.css">
                             <padding>
                                 <Insets bottom="5.0" />
                             </padding>
