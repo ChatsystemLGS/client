@@ -26,7 +26,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
-        try { scene.getStylesheets().add("style.css"); } catch (Exception ignored) {} // TODO: figure out why
+        scene.getStylesheets().add("style.css");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -49,6 +49,6 @@ public class Main extends Application {
         new Client(Config.getDefaultConfig());
 
         // GUI
-        launch();
+        launch(args);
     }
 }
