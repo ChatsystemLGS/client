@@ -5,7 +5,7 @@ import client.ProtocolException;
 @SuppressWarnings("all")
 public interface GuiInterface {
 
-    void register(String emailAddress, String password, String nickname);
+    boolean register(String emailAddress, String password, String nickname) throws ProtocolException;
 
     boolean login(String emailAddress, String password) throws ProtocolException;
 

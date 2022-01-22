@@ -123,8 +123,14 @@ public class ServerHandler implements Runnable, GuiInterface {
     //* Commands
 
     @Override
-    public void register(String emailAddress, String password, String nickname) {
+    public boolean register(String emailAddress, String password, String nickname) throws ProtocolException {
+        String response = execute(Session.Command.REGISTER, emailAddress, password, nickname);
 
+        try {
+            return response.split(" ")[0].contentEquals("OK") ? true : false;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     // mirko.leon.weih@lgs-hu.eu
@@ -161,7 +167,7 @@ public class ServerHandler implements Runnable, GuiInterface {
 
     }
 
-    // encoding
+    // encoding/decoding
 
     private String toBase64String(byte[] data) {
         return Base64.getEncoder().encodeToString(data);

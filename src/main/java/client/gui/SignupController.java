@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 
 public class SignupController {
@@ -43,10 +44,13 @@ public class SignupController {
             alert.showAndWait();
         }
         else {
+
+
             //instantiaing user object
 
-            User newUser = new User(userName.getText(), userEmail.getText(), userPassword.getText(), "/1.png"); // TODO: load image into database
+            User newUser = new User(userName.getText(), userEmail.getText(), userPassword.getText(), "/1.png"); // TODO: load image from database
             //checking if user with email exits, we will not let him her sign up
+            
 
             if (users.exists(newUser)) {
                 alert = new Alert(Alert.AlertType.ERROR);
@@ -65,7 +69,7 @@ public class SignupController {
 
 
                 //now show login Screen to user
-                fxml = FXMLLoader.load(getClass().getResource("/scenes/Main.fxml"));
+                fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/Main.fxml")));
                 Stage stage = new Stage();
                 stage.setTitle("Home");
                 Scene scene = new Scene(fxml);
@@ -79,6 +83,7 @@ public class SignupController {
         }
 
     }
+
     //profile picture chooser
     @FXML
     public void chooseProfilePicture(ActionEvent actionEvent) {
@@ -87,7 +92,7 @@ public class SignupController {
         File file = chooser.showOpenDialog(stage);
 
         if (file != null) {
-            userProfile = file.getAbsolutePath(); // TODO: image from db
+            userProfile = file.getAbsolutePath(); // TODO: image into db
         }
     }
 }
