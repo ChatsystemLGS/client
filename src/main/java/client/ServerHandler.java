@@ -133,8 +133,6 @@ public class ServerHandler implements Runnable, GuiInterface {
         }
     }
 
-    // mirko.leon.weih@lgs-hu.eu
-    // mWe1h_1234
     @Override
     public boolean login(String emailAddress, String password) throws ProtocolException {
         String response = execute(Session.Command.LOGIN, emailAddress, password);
