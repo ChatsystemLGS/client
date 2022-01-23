@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.ChatController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.ChatController">
     <children>
         <VBox fx:id="sidePane" prefHeight="600.0" prefWidth="303.0" spacing="10.0" styleClass="borderStyle" stylesheets="@../style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -45,7 +41,7 @@
                                 <HBox fx:id="searchContainer" alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="257.0" styleClass="searchContainer" stylesheets="@../style.css">
                                     <children>
                                         <FontAwesomeIcon fx:id="searchIcon" fill="#ffffff4d" glyphName="SEARCH" size="1.5em" />
-                                        <TextField fx:id="searchUser" prefHeight="24.0" prefWidth="181.0" promptText="Search" styleClass="searchUser" stylesheets="@../style.css">
+                                        <TextField fx:id="searchUser" prefHeight="24.0" prefWidth="181.0" promptText="Freund hinzufügen" styleClass="searchUser" stylesheets="@../style.css">
                                             <font>
                                                 <Font name="Arial" size="18.0" />
                                             </font>
