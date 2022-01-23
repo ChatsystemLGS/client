@@ -1,19 +1,20 @@
 .root{
-    -fx-background-color: rgb(46, 46, 46);    
+    -fx-background-color: rgba(39,39,39,0.5);
 }
-
-.background {
-    -fx-background-image: url("background.jpg"); /* TODO: fix */
+.background{
+    -fx-background-image: url('background.jpg');
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
 }
-
+.root-main{
+    -fx-background-color: rgba(39,39,39,0.5);
+}
 .borderStyle{
    -fx-border-style: none solid;
 
 }
 .searchContainer{
- -fx-background-color: rgba(39,39,39,0.3);
+ -fx-background-color: rgba(138,138,138,0.3);
  -fx-background-radius: 20px;
 }
 .searchUser{
@@ -44,6 +45,13 @@
     -fx-background-radius: 20;
     -fx-text-fill: black;
 }
+.chatLabelR{
+    -fx-background-width: 200;
+    -fx-background-height: 50;
+    -fx-background-color: rgb(219,175,72);
+    -fx-background-radius: 20;
+    -fx-text-fill: black;
+}
 .scroll-pane {
    -fx-background: transparent;
   -fx-background-color: transparent;
@@ -57,6 +65,7 @@
 /* Login and Signup CSS */
 .parent{
     -fx-background-color: transparent;
+
 }
 .pane{
    -fx-background-color: rgba(0,0,0,0.5);
