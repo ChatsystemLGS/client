@@ -5,9 +5,9 @@ import client.ProtocolException;
 @SuppressWarnings("all")
 public interface GuiInterface {
 
-    boolean register(String emailAddress, String password, String nickname) throws ProtocolException;
+    String register(String emailAddress, String password, String nickname) throws ProtocolException;
 
-    boolean login(String emailAddress, String password) throws ProtocolException;
+    String login(String emailAddress, String password) throws ProtocolException;
 
     void joinGroup(int channelID);
 
