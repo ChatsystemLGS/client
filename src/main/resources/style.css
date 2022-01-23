@@ -1,11 +1,6 @@
 .root{
     -fx-background-color: rgba(39,39,39,0.5);
 }
-.background{
-    -fx-background-image: url('background.jpg');
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: cover;
-}
 .root-main{
     -fx-background-color: rgba(39,39,39,0.5);
 }
