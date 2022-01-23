@@ -1,5 +1,6 @@
 package client.gui;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,20 +18,17 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
-
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 
 public class UserInfoController implements Initializable {
 
     //data members
     @FXML private Circle userProfile;
-
     @FXML private TextField userName;
     @FXML private TextField userEmail;
     @FXML private TextField userPassword;
     @FXML private FontAwesomeIcon back;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -39,16 +37,19 @@ public class UserInfoController implements Initializable {
         back.setOnMouseClicked(e->{
             Parent root = null;
             try {
-                root = FXMLLoader.load(getClass().getResource("/scenes/ChatScreen.fxml"));
-            } catch (IOException exception) {
-                exception.printStackTrace();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/ChatScreen.fxml")));
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
+
             Stage stage = new Stage();
             stage.setTitle("Profile");
+
+            assert root != null;
             Scene scene = new Scene(root);
             stage.initStyle(StageStyle.TRANSPARENT);
             scene.setFill(Color.TRANSPARENT);
-            try { scene.getStylesheets().add("style.css"); } catch (Exception ignored) {} // TODO: figure out why
+            scene.getStylesheets().add("style.css");
             stage.setScene(scene);
             stage.show();
             ((Node)(e.getSource())).getScene().getWindow().hide();
@@ -56,18 +57,16 @@ public class UserInfoController implements Initializable {
     }
 
     //this function will put details into fields of user which is logged in
-    public void configure(String userName, String userEmail, String userProfileImage){
+    public void configure(String userName, String userEmail, String userProfileImage) {
         userProfile.setFill(new ImagePattern(new Image(userProfileImage)));
         this.userName.setText(userName);
         this.userEmail.setText(userEmail);
-
     }
 
     @FXML
-    private void update(){
+    private void update() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Erfolgreich aktualisiert");
         alert.showAndWait();
     }
-
 }
