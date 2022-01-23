@@ -111,48 +111,29 @@ public class ServerHandler implements Runnable, GuiInterface {
         if (response.length == 0)
             throw ProtocolException.getException(rawResponse);
 
-        if (!response[0].contentEquals("OK"))
-            throw ProtocolException.getException(rawResponse);
-
-        if (response.length > 1)
-            return rawResponse;// String.join(" ", Arrays.copyOfRange(response, 1, response.length));
-
-        return "";
+        return rawResponse;
     }
 
     //* Commands
 
     @Override
-    public boolean register(String emailAddress, String password, String nickname) throws ProtocolException {
-        String response = execute(Session.Command.REGISTER, emailAddress, password, nickname);
-
-        try {
-            return response.split(" ")[0].contentEquals("OK") ? true : false;
-        } catch (Exception e) {
-            return false;
-        }
+    public String register(String emailAddress, String password, String nickname) throws ProtocolException {
+        return execute(Session.Command.REGISTER, emailAddress, nickname, password);
     }
 
     @Override
-    public boolean login(String emailAddress, String password) throws ProtocolException {
-        String response = execute(Session.Command.LOGIN, emailAddress, password);
-
-        try {
-            return response.split(" ")[0].contentEquals("OK") ? true : false;
-        } catch (Exception e) {
-            return false;
-        }
-        // return execute(Session.Command.LOGIN, emailAddress, password).split(" ")[0].contentEquals("OK") ? true : false;
+    public String login(String emailAddress, String password) throws ProtocolException {
+        return execute(Session.Command.LOGIN, emailAddress, password).split(" ")[0];
     }
 
     @Override
     public void joinGroup(int channelID) {
-
+        // TODO
     }
 
     @Override
     public void addFriend(int userID) {
-
+        
     }
 
     @Override

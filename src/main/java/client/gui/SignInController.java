@@ -35,8 +35,10 @@ public class SignInController {
     private void openMainScreen(ActionEvent event){
         try {
             Alert a = new Alert(Alert.AlertType.ERROR);
+            String response = ServerHandler.sh.login(userEmail.getText(), userPassword.getText());
 
-            if (ServerHandler.sh.login(userEmail.getText(), userPassword.getText())) { // try login
+            if (response.equals(ProtocolException.Status.OK.toString())) {
+
                 fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/ChatScreen.fxml")));
 
                 Stage stage = new Stage();
@@ -49,10 +51,21 @@ public class SignInController {
                 stage.setScene(scene);
                 stage.show();
                 ((Node)(event.getSource())).getScene().getWindow().hide();
-            } else {
-                a.setTitle("Falsche E-Mail oder Passwort");
-                a.setContentText("Falsche E-Mail oder Passwort. Bitte probiere es erneut.");
+
+            } else if (ServerHandler.sh.login(userEmail.getText(), userPassword.getText()).equals(ProtocolException.Status.EMAIL_NOT_REGISTERED.toString())) {
+
+                a.setTitle("E-Mail nicht registriert");
+                a.setContentText("E-Mail nicht registriert! Bitte erstelle zuerst einen Account.");
                 a.show();
+
+            } else if (response.equals(ProtocolException.Status.PASSWORD_INVALID.toString())) {
+
+                a.setTitle("Passwort falsch");
+                a.setContentText("Passwort falsch! Bitte probiere es erneut.");
+                a.show();
+
+            } else {
+                throw new ProtocolException.UnknownException(response);
             }
         } catch (IOException | ProtocolException e) {
             e.printStackTrace();
