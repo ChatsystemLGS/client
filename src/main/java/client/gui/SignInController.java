@@ -6,7 +6,7 @@ support functionalities to add user and get list of all users
 package client.gui;
 
 import client.ProtocolException;
-import client.ServerHandler;
+import client.interfaces.GuiInterface;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +35,7 @@ public class SignInController {
     private void openMainScreen(ActionEvent event){
         try {
             Alert a = new Alert(Alert.AlertType.ERROR);
-            String response = ServerHandler.sh.login(userEmail.getText(), userPassword.getText());
+            String response = GuiInterface.login(userEmail.getText(), userPassword.getText());
 
             if (response.equals(ProtocolException.Status.OK.toString())) {
 
@@ -52,7 +52,7 @@ public class SignInController {
                 stage.show();
                 ((Node)(event.getSource())).getScene().getWindow().hide();
 
-            } else if (ServerHandler.sh.login(userEmail.getText(), userPassword.getText()).equals(ProtocolException.Status.EMAIL_NOT_REGISTERED.toString())) {
+            } else if (GuiInterface.login(userEmail.getText(), userPassword.getText()).equals(ProtocolException.Status.EMAIL_NOT_REGISTERED.toString())) {
 
                 a.setTitle("E-Mail nicht registriert");
                 a.setContentText("E-Mail nicht registriert! Bitte erstelle zuerst einen Account.");

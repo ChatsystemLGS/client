@@ -1,6 +1,5 @@
 package client;
 
-import client.interfaces.GuiInterface;
 import client.simplelogger.SimpleLogger;
 import client.simplelogger.SimpleLogger.LogLevel;
 
@@ -14,7 +13,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 @SuppressWarnings("all")
-public class ServerHandler implements Runnable, GuiInterface {
+public class ServerHandler implements Runnable {
 
     public static ServerHandler sh;
     Socket server;
@@ -87,7 +86,7 @@ public class ServerHandler implements Runnable, GuiInterface {
         // new ServerHandler(server, client);
 	}
 
-    private String execute(Session.Command cmd, Object... parameters) throws ProtocolException {
+    public String execute(Session.Command cmd, Object... parameters) throws ProtocolException {
 
         StringBuilder sb = new StringBuilder(cmd.toString());
 
@@ -114,40 +113,6 @@ public class ServerHandler implements Runnable, GuiInterface {
         return rawResponse;
     }
 
-    //* Commands
-
-    @Override
-    public String register(String emailAddress, String password, String nickname) throws ProtocolException {
-        return execute(Session.Command.REGISTER, emailAddress, nickname, password);
-    }
-
-    @Override
-    public String login(String emailAddress, String password) throws ProtocolException {
-        return execute(Session.Command.LOGIN, emailAddress, password).split(" ")[0];
-    }
-
-    @Override
-    public void joinGroup(int channelID) {
-        // TODO
-    }
-
-    @Override
-    public void addFriend(int userID) {
-        
-    }
-
-    @Override
-    public void sendMessage(int channelID, Byte[] data, Enum dataType) {
-
-    }
-
-    @Override
-    public void quit() {
-
-    }
-
-    // encoding/decoding
-
     private String toBase64String(byte[] data) {
         return Base64.getEncoder().encodeToString(data);
     }
@@ -156,7 +121,7 @@ public class ServerHandler implements Runnable, GuiInterface {
         return Base64.getDecoder().decode((data).getBytes());
     }
 
-    private String base64toString(String data) {
+    public String base64toString(String data) {
         if (data.contentEquals("-"))
             return "";
         if (data.contentEquals("null"))

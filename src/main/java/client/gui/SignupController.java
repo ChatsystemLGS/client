@@ -1,7 +1,7 @@
 package client.gui;
 
 import client.ProtocolException;
-import client.ServerHandler;
+import client.interfaces.GuiInterface;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,7 +48,7 @@ public class SignupController {
 
         } else {
 
-            String response = ServerHandler.sh.register(userEmail.getText(), userPassword.getText(), userName.getText());
+            String response = GuiInterface.register(userEmail.getText(), userPassword.getText(), userName.getText());
 
             if (response.equals(ProtocolException.Status.OK.toString())) {
 
