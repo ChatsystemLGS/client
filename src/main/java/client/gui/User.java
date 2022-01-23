@@ -14,13 +14,19 @@ public class User {
     private String userName;
     private String userEmail;
     private String userPassword;
-    private String userProfileImage = "/tony.jpg"; // TODO: image from db
+    private String userProfileImage = "default.png"; // TODO: image from db
 
     //constructor
-    public User(String userName, String userEmail, String userPassword, String userProfileImage){ // TODO: need password? & email?
+    public User(String userName, String userEmail, String userPassword, String userProfileImage) { // TODO: need password? & email?
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
+        this.userProfileImage = userProfileImage;
+    }
+
+    public User(String userName, String userEmail, String userProfileImage) {
+        this.userName = userName;
+        this.userEmail = userEmail;
         this.userProfileImage = userProfileImage;
     }
 
@@ -71,17 +77,5 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(userName, userEmail, userPassword, userProfileImage);
-    }
-
-    // public static BufferedImage getImageFromBytes(byte[] data) throws Exception {
-    //     // BufferedImage bImage = ImageIO.read(new File("client.jpg"));
-    //     // ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    //     // ImageIO.write(bImage, "jpg", bos );
-
-    //     // get data from db
-    //     ByteArrayInputStream bais = new ByteArrayInputStream(data);
-    //     BufferedImage image = ImageIO.read(bais);
-    //     // ImageIO.write(bImage2, "jpg", new File("output.jpg") );
-    //     return image;
-    //  }  
+    } 
 }

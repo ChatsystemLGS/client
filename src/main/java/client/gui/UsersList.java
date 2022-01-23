@@ -18,11 +18,11 @@ public class UsersList {
 
         // TODO: get users info from db
         //adding static data
-        addUser("Mary Jane", "Mary@Yahoo.com", "marry1234", "/marry.jpg");
-        addUser("Tom Cruise", "tom@gmail.com", "tom1234", "/tom.jpg");
-        addUser("Peter", "peter@Yahoo.com", "peter1234", "/peter.jpg");
-        addUser("Tony", "tony@Yahoo.com", "tony1234", "/tony.jpg");
-        addUser("Thanos", "thanos@hotmail.com", "thanos1234", "/thanos.jpg");
+        addUser("Mary Jane", "Mary@Yahoo.com", "default.png");
+        addUser("Tom Cruise", "tom@gmail.com", "default.png");
+        addUser("Peter", "peter@Yahoo.com", "default.png");
+        addUser("Tony", "tony@Yahoo.com", "default.png");
+        addUser("Thanos", "thanos@hotmail.com", "default.png");
     }
 
 
@@ -46,6 +46,22 @@ public class UsersList {
             User newUser = new User(userName, userEmail, userPassword, userProfileImage);
             if(!exists(newUser)){
                 users.add(new User(userName, userEmail, userPassword, userProfileImage));
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Nutzer existiert bereits");
+            }
+
+        }
+    }
+
+    public void addUser(String userName, String userEmail, String userProfileImage){
+        if(this.users==null){
+            System.out.println("Please Initialize Array List");
+        }
+        else{
+            User newUser = new User(userName, userEmail, userProfileImage);
+            if(!exists(newUser)){
+                users.add(new User(userName, userEmail, userProfileImage));
             }
             else{
                 JOptionPane.showMessageDialog(null, "Nutzer existiert bereits");

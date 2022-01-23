@@ -54,8 +54,8 @@ public class ChatController implements Initializable {
     //members specific to class
     private UsersList users = new UsersList();
     DateFormat dateFormat = new SimpleDateFormat("hh.mm aa");
-    private String userProfileImage = "/6.jpg";
-    private String selectedUserImage = "/marry.jpg";
+    private String userProfileImage = "default.png";
+    private String selectedUserImage = "default.png";
     private boolean isWindowMaximized = false;
     private Rectangle2D screenBounds;
 
@@ -73,7 +73,11 @@ public class ChatController implements Initializable {
 //                BackgroundPosition.DEFAULT,
 //                BackgroundSize.DEFAULT);
 //        Background bGround = new Background(bImg);
-        rootPane.setStyle("-fx-background-image:url('/background.jpeg')");
+        rootPane.setStyle(
+                "-fx-background-image:url('background.jpg');" +
+                "-fx-background-repeat: no-repeat;" +
+                "-fx-background-size: cover;"
+        );
         screenBounds = Screen.getPrimary().getBounds();
 
         //set profile pic of user who is logged in
@@ -96,7 +100,7 @@ public class ChatController implements Initializable {
 
                 //we are sending profile data as arguments to controller
                 UserInfoController userInfoController = loader.getController();
-                userInfoController.configure(selectedUserName.getText(), users.getUsers().get(0).getUserEmail(), "/6.jpg");
+                userInfoController.configure(selectedUserName.getText(), users.getUsers().get(0).getUserEmail(), "default.png");
                 Stage stage = new Stage();
                 stage.setTitle("Profile");
                 Scene scene = new Scene(root);
@@ -155,7 +159,7 @@ public class ChatController implements Initializable {
         vbox.getStyleClass().add("chatLabel");
         vbox.setAlignment(Pos.TOP_LEFT);
         Circle userIcon = new Circle(25);
-        userIcon.setFill(new ImagePattern(new Image("/6.jpg")));
+        userIcon.setFill(new ImagePattern(new Image("default.png")));
         Label msg = new Label(msgField.getText());
         msg.setFont(new Font("Arial", 16));
         msg.setTextFill(Color.BLACK);
