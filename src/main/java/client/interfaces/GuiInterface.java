@@ -21,7 +21,7 @@ public interface GuiInterface {
     }
 
     static String login(String emailAddress, String password) throws ProtocolException {
-        return sh.execute(Session.Command.LOGIN, emailAddress, password).split(" ")[0];
+        return sh.execute(Session.Command.LOGIN, emailAddress, password);
 
         /*
         required state          : CONNECTED
