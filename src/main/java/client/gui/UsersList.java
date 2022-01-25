@@ -2,9 +2,9 @@ package client.gui;
 
 import client.ProtocolException;
 import client.ServerHandler;
-import client.Session;
 import client.db.Channel;
 import client.db.Message;
+import client.interfaces.GuiUpdateInterface;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class UsersList {
 
 
     private void getChannels() throws ProtocolException {
-        String response = ServerHandler.sh.execute(Session.Command.GETCHANNELS);
+        String response = GuiUpdateInterface.getChannels();
         ArrayList<Channel> channels = parseArray(response);
 
         assert channels != null;
@@ -65,12 +65,14 @@ public class UsersList {
 
     private User getUserForDM(int channelID, String latestMessage) throws ProtocolException {
         int currentUserID = SignInController.currentUserID;
-        String response = ServerHandler.sh.execute(Session.Command.GETCHANNELMEMBERS, channelID);
+        String response = GuiUpdateInterface.getChannelMembers(channelID);
+
         if (response.equals(ProtocolException.Status.CHANNEL_NOT_FOUND.toString())) {
             throw new ProtocolException.ChannelNotFoundException();
         } else {
             ArrayList<String[]> users = getUsersFromResponse(response);
             assert users != null;
+
             if (Integer.parseInt(users.get(0)[0]) == (currentUserID)) {
                 return new User(users.get(1)[1], latestMessage, users.get(1)[2]);
             } else {
