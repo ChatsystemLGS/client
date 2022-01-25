@@ -130,7 +130,7 @@ public interface GuiInterface {
          */
     }
 
-    static String sendMessage(int channelID, Byte[] data, Enum dataType) throws ProtocolException {
+    static String sendMessage(int channelID, byte[] data, Enum dataType) throws ProtocolException {
         return sh.execute(Session.Command.SENDMESSAGE, channelID, data, dataType);
 
         /*
