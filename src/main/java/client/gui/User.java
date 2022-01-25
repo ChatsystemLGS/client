@@ -13,10 +13,10 @@ public class User {
     //data members
     private String userName;
     private String userEmail;
+    private String latestMessage;
     private String userPassword;
     private String userProfileImage = "default.png"; // TODO: image from db
 
-    //constructor
     public User(String userName, String userEmail, String userPassword, String userProfileImage) { // TODO: need password? & email?
         this.userName = userName;
         this.userEmail = userEmail;
@@ -24,9 +24,9 @@ public class User {
         this.userProfileImage = userProfileImage;
     }
 
-    public User(String userName, String userEmail, String userProfileImage) {
+    public User(String userName, String latestMessage, String userProfileImage) {
         this.userName = userName;
-        this.userEmail = userEmail;
+        this.latestMessage = latestMessage;
         this.userProfileImage = userProfileImage;
     }
 
@@ -39,20 +39,12 @@ public class User {
         this.userName = userName;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getLatestMessage() {
+        return latestMessage;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setLatestMessage(String latestMessage) {
+        this.latestMessage = latestMessage;
     }
 
     public String getUserProfileImage() {
@@ -63,19 +55,8 @@ public class User {
         this.userProfileImage = userProfileImage;
     }
 
-    //overriding equals method
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(userEmail, user.userEmail);
-
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(userName, userEmail, userPassword, userProfileImage);
+        return Objects.hash(userName, latestMessage, userProfileImage);
     } 
 }
