@@ -12,18 +12,6 @@ public class User extends TransmittableObject {
 		registerAttributes(id, emailAddress, nickname, note, type);
 	}
 
-	// private String hashPassword(String password) {
-	// 	MessageDigest md = null;
-
-	// 	try {
-	// 		md = MessageDigest.getInstance("SHA-512");
-	// 	} catch (NoSuchAlgorithmException e) {
-	// 		e.printStackTrace();
-	// 	}
-
-	// 	return Base64.getEncoder().encodeToString(md.digest(password.getBytes()));
-	// }
-
 	public User withId(int id) {
 		this.id.set(id);
 		return this;
