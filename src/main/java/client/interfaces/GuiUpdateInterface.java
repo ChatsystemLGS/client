@@ -10,6 +10,10 @@ import java.sql.Timestamp;
 public interface GuiUpdateInterface {
 
     ServerHandler sh = ServerHandler.sh;
+
+    static String getUserIdFromEmail(String userEmail) throws ProtocolException {
+        return GuiUpdateInterface.getUser(userEmail);
+    }
     
     static String getPublicGroups() throws ProtocolException {
         return sh.execute(Session.Command.GETPUBLICGROUPS);
@@ -64,10 +68,6 @@ public interface GuiUpdateInterface {
         return value(s)         : user:User
         potential status codes  : USER_NOT_FOUND
          */
-    }
-
-    static String getUserIdFromEmail(String userEmail) throws ProtocolException {
-        return GuiUpdateInterface.getUser(userEmail);
     }
 
     static String getRelatedUsers() throws ProtocolException {
