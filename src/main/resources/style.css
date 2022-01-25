@@ -1,94 +1,89 @@
-.root{
-    -fx-background-color: rgba(39,39,39,0.5);
+.root {
+  -fx-background-color: rgba(39, 39, 39, 0.5);
 }
-.root-main{
-    -fx-background-color: rgba(39,39,39,0.5);
+.root-main {
+  -fx-background-color: rgba(39, 39, 39, 0.5);
 }
-.borderStyle{
-   -fx-border-style: none solid;
-
+.borderStyle {
+  -fx-border-style: none solid;
 }
-.searchContainer{
- -fx-background-color: rgba(138,138,138,0.3);
- -fx-background-radius: 20px;
+.searchContainer {
+  -fx-background-color: rgba(138, 138, 138, 0.3);
+  -fx-background-radius: 20px;
 }
-.searchUser{
-    -fx-background-color: transparent;
-    -fx-text-fill: white;
+.searchUser {
+  -fx-background-color: transparent;
+  -fx-text-fill: white;
 }
-#sidePane{
-    -fx-border-style: hidden solid solid solid;
-    -fx-border-color: black;
-    -fx-border-width: 1px;
+#sidePane {
+  -fx-border-style: hidden solid solid solid;
+  -fx-border-color: black;
+  -fx-border-width: 1px;
 }
-#hbox_sidePane{
-    -fx-border-style: hidden hidden solid hidden;
-    -fx-border-color: black;
-    -fx-border-width: 1px;
-
+#hbox_sidePane {
+  -fx-border-style: hidden hidden solid hidden;
+  -fx-border-color: black;
+  -fx-border-width: 1px;
 }
 
-#selectedUserChat{
-    -fx-border-style: hidden solid solid solid;
-    -fx-border-color: black;
-    -fx-border-width: 1px;
+#selectedUserChat {
+  -fx-border-style: hidden solid solid solid;
+  -fx-border-color: black;
+  -fx-border-width: 1px;
 }
-.chatLabel{
-    -fx-background-width: 200;
-    -fx-background-height: 50;
-    -fx-background-color: rgb(219,219,219);
-    -fx-background-radius: 20;
-    -fx-text-fill: black;
+.chatLabel {
+  -fx-background-width: 200;
+  -fx-background-height: 50;
+  -fx-background-color: rgb(219, 219, 219);
+  -fx-background-radius: 20;
+  -fx-text-fill: black;
 }
-.chatLabelR{
-    -fx-background-width: 200;
-    -fx-background-height: 50;
-    -fx-background-color: rgb(219,175,72);
-    -fx-background-radius: 20;
-    -fx-text-fill: black;
+.chatLabelR {
+  -fx-background-width: 200;
+  -fx-background-height: 50;
+  -fx-background-color: rgb(219, 175, 72);
+  -fx-background-radius: 20;
+  -fx-text-fill: black;
 }
 .scroll-pane {
-   -fx-background: transparent;
+  -fx-background: transparent;
   -fx-background-color: transparent;
 }
 .scroll-bar:vertical {
   -fx-background-color: transparent;
-
 }
-
 
 /* Login and Signup CSS */
-.parent{
-    -fx-background-color: transparent;
-
+.parent {
+  -fx-background-color: transparent;
 }
-.pane{
-   -fx-background-color: rgba(0,0,0,0.5);
+.pane {
+  -fx-background-color: rgba(0, 0, 0, 0.5);
 }
-.trans-btn-white-border{
-    -fx-background-color: transparent;
-    -fx-background-radius: 5px;
-    -fx-border-color: #cccccc;
-    -fx-border-radius: 5px;
-    -fx-border-width: 1px;
-    -fx-text-fill: whitesmoke;
+.trans-btn-white-border {
+  -fx-background-color: transparent;
+  -fx-background-radius: 5px;
+  -fx-border-color: #cccccc;
+  -fx-border-radius: 5px;
+  -fx-border-width: 1px;
+  -fx-text-fill: whitesmoke;
 }
-.white-pane{
-    -fx-background-color: white;
+.white-pane {
+  -fx-background-color: white;
 }
-.blue-panel{
-    -fx-background-color: rgb(66, 70, 74);
+.blue-panel {
+  -fx-background-color: rgb(66, 70, 74);
 }
-.tf_box{
-    -fx-background-color: transparent;
-    -fx-border-color: #DEDEE4;
-    -fx-border-width: 0px 0px 1px 0px;
+.tf_box {
+  -fx-background-color: transparent;
+  -fx-border-color: #dedee4;
+  -fx-border-width: 0px 0px 1px 0px;
 }
-.tf{
-    -fx-background-color: transparent;
+.tf {
+  -fx-background-color: transparent;
 }
-.blue-btn{
-    -fx-background-color: #2196f3;
-    -fx-background-radius: 5px;
-    -fx-text-fill: white;
+.blue-btn {
+  -fx-background-color: #2196f3;
+  -fx-background-radius: 5px;
+  -fx-text-fill: white;
 }
