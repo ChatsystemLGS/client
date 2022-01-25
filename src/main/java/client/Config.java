@@ -22,11 +22,13 @@ public class Config {
         return new Config(DEFAULT_CONFIG.MAX_MESSAGE_LENGTH, DEFAULT_CONFIG.PORT, DEFAULT_CONFIG.ADDRESS);
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static Config loadCfg(File f) {
         // TODO: implement load from file
         return null;
     }
 
+    @SuppressWarnings("EmptyMethod")
     public static void WriteCfg(File f, Config cfg) {
         // TODO: implement write to file
     }

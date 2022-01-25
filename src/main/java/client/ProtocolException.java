@@ -186,7 +186,7 @@ public abstract class ProtocolException extends Exception {
         private final Date lastMessageTime;
         private final Message[] messages;
 
-        public TooManyMessagesException(Date lastMessageTime, Message[] messages) {
+        public TooManyMessagesException(Date lastMessageTime, @SuppressWarnings("ClassEscapesDefinedScope") Message[] messages) {
             super(Status.TOO_MANY_MESSAGES);
             this.lastMessageTime = lastMessageTime;
             this.messages = messages;
@@ -196,6 +196,7 @@ public abstract class ProtocolException extends Exception {
             return lastMessageTime;
         }
 
+        @SuppressWarnings("ClassEscapesDefinedScope")
         public Message[] getMessages() {
             return messages;
         }

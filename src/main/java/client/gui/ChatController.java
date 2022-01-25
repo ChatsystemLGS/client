@@ -62,14 +62,13 @@ public class ChatController implements Initializable {
     @FXML private Label loggedInUserName;
 
     // members specific to class
-    private UsersList users = new UsersList();
-    DateFormat dateFormat = new SimpleDateFormat("hh.mm aa");
-    private String userProfileImage = "default.png"; // TODO: DB
+    private final UsersList users = new UsersList();
+    final DateFormat dateFormat = new SimpleDateFormat("hh.mm aa");
     private String selectedUserImage = "default.png"; // TODO: DB
     Rectangle2D screenBounds;
 
     // TODO: DB
-    private String[] messages = {"Hi I am Jack!", "Hello how are you", "I am fine", "Hi Bro",
+    private final String[] messages = {"Hi I am Jack!", "Hello how are you", "I am fine", "Hi Bro",
             "I am going Outside", "Well Its Ok", "Demonstration Purpose Only", "Java is good language", "I really Like this"};
 
     @Override
@@ -92,6 +91,8 @@ public class ChatController implements Initializable {
         screenBounds = Screen.getPrimary().getBounds();
 
         // set profile pic of user who is logged in
+        // TODO: DB
+        String userProfileImage = "default.png";
         userProfile.setFill(new ImagePattern(new Image(userProfileImage))); // TODO: DB
         loggedInUserName.setText(user.getUserName());
 
@@ -205,6 +206,7 @@ public class ChatController implements Initializable {
     }
 
     // TODO: implement DB/server methods
+    @SuppressWarnings("SameReturnValue")
     private int getChannelId() {
         return 1;
     }
@@ -243,7 +245,7 @@ public class ChatController implements Initializable {
         msg.setFont(new Font("Arial", 16));
         msg.setTextFill(Color.BLACK);
 
-        String dateString = dateFormat.format(new Date()).toString();
+        String dateString = dateFormat.format(new Date());
         Label timeLabel = new Label(dateString);
         timeLabel.setFont(new Font("Arial", 12));
         timeLabel.setTextFill(Color.BLACK);
@@ -275,7 +277,7 @@ public class ChatController implements Initializable {
         msg.setTextFill(Color.BLACK);
         msg.setPadding(new Insets(5, 0, 0, 50));
 
-        String dateString = dateFormat.format(new Date()).toString();
+        String dateString = dateFormat.format(new Date());
         Label timeLabel = new Label(dateString);
         timeLabel.setFont(new Font("Arial", 12));
         timeLabel.setTextFill(Color.BLACK);

@@ -81,7 +81,7 @@ public class UsersList {
         }
     }
 
-    private ArrayList<String[]> getUsersFromResponse(String response) throws ProtocolException {
+    private ArrayList<String[]> getUsersFromResponse(String response) {
         if (!response.contentEquals("[]")) {
             String[] arr = trim(response);
 

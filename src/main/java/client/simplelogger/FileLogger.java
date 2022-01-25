@@ -49,12 +49,8 @@ public class FileLogger extends BasicLogger implements AutoCloseable {
     private BufferedWriter initBufferedWriter(LogType logType) throws IllegalArgumentException, IOException {
 
         return switch (logType) {
-            case APPEND -> {
-                yield new BufferedWriter(new FileWriter(logFile, true));
-            }
-            case OVERWRITE -> {
-                yield new BufferedWriter(new FileWriter(logFile));
-            }
+            case APPEND -> new BufferedWriter(new FileWriter(logFile, true));
+            case OVERWRITE -> new BufferedWriter(new FileWriter(logFile));
             case DO_NOT_OVERWRITE -> {
                 if (!logFile.exists())
                     throw new IllegalArgumentException(String.format("File %s already exists.", logFile));
@@ -82,7 +78,7 @@ public class FileLogger extends BasicLogger implements AutoCloseable {
     }
 
     public enum LogType {
-        APPEND, OVERWRITE, DO_NOT_OVERWRITE; // RENAME latest.log -> {date}.log
+        APPEND, OVERWRITE, DO_NOT_OVERWRITE // RENAME latest.log -> {date}.log
     }
 
 }

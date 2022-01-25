@@ -2,11 +2,11 @@ package client.db;
 
 public class User extends TransmittableObject {
 
-    private Attr<Integer> id = new Attr<>();
-    private Attr<String> emailAddress = new Attr<>();
-    private Attr<String> nickname = new Attr<>();
-    private Attr<String> note = new Attr<>();
-    private Attr<RelationshipType> type = new Attr<>();
+    private final Attr<Integer> id = new Attr<>();
+    private final Attr<String> emailAddress = new Attr<>();
+    private final Attr<String> nickname = new Attr<>();
+    private final Attr<String> note = new Attr<>();
+    private final Attr<RelationshipType> type = new Attr<>();
 
     public User() {
         registerAttributes(id, emailAddress, nickname, note, type);

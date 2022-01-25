@@ -9,7 +9,7 @@ public class Channel extends TransmittableObject {
     private final Type type;
     private final String name;
 
-    private ArrayList<Message> messages = new ArrayList<>();
+    private final ArrayList<Message> messages = new ArrayList<>();
 
     public Channel(int id, Type type, String name) {
         this.id = id;
@@ -41,7 +41,7 @@ public class Channel extends TransmittableObject {
     }
 
     public Message[] getMessages() {
-        return messages.toArray(new Message[messages.size()]);
+        return messages.toArray(new Message[0]);
     }
 
     public enum Type {

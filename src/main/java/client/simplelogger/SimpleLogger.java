@@ -5,7 +5,7 @@ import java.util.Locale;
 
 public final class SimpleLogger {
 
-    private static HashSet<LogListener> logListeners = new HashSet<>();
+    private static final HashSet<LogListener> logListeners = new HashSet<>();
 
     // prevent instantiation
     private SimpleLogger() {
@@ -34,12 +34,12 @@ public final class SimpleLogger {
     }
 
     public enum LogLevel {
-        DEBUG, INFO, WARN, ERROR;
+        DEBUG, INFO, WARN, ERROR
     }
 
     public interface LogListener {
 
-        public abstract void log(String message, LogLevel logLevel);
+        void log(String message, LogLevel logLevel);
 
     }
 

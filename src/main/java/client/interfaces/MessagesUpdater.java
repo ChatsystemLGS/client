@@ -9,9 +9,10 @@ import java.sql.Timestamp;
 //! concept... not working just an idea
 public class MessagesUpdater implements Runnable {
 
-    User u;
-    Message m;
+    final User u;
+    final Message m;
 
+    @SuppressWarnings("ClassEscapesDefinedScope")
     public MessagesUpdater(User u, Message m) {
         this.u = u;
         this.m = m;
@@ -25,6 +26,7 @@ public class MessagesUpdater implements Runnable {
 
         String response;
         try {
+            //noinspection UnusedAssignment
             response = GuiUpdateInterface.receiveMessages(channelID, tFrom, tUtil);
         } catch (ProtocolException e) {
             e.printStackTrace();

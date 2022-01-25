@@ -15,6 +15,7 @@ ext {
     junitVersion = '5.8.2'
 }
 
+//noinspection GroovyAssignabilityCheck
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }

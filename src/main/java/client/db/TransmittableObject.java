@@ -18,29 +18,21 @@ public abstract class TransmittableObject {
     public String toString() {
         return Arrays.toString(attributes);
 
-//		String s = "";
-//
-//		for (int i = 0; i < attributes.length - 1; i++) {
-//			s += attributes[i].key() + " " + attributes[i].toString() + " ";
-//		}
-//		s += attributes[attributes.length - 1].toString();
-//
-//		return s;
     }
 
     public String transmittableString() {
-        Attr<?>[] filteredAttributes = Arrays.stream(attributes).filter(a -> a.isSet()).toArray(Attr<?>[]::new);
+        Attr<?>[] filteredAttributes = Arrays.stream(attributes).filter(Attr::isSet).toArray(Attr<?>[]::new);
 
-        String s = "";
+        StringBuilder s = new StringBuilder();
 
         for (int i = 0; i < filteredAttributes.length - 1; i++) {
 
 
-            s += filteredAttributes[i].transmittableString() + " ";
+            s.append(filteredAttributes[i].transmittableString()).append(" ");
         }
-        s += filteredAttributes[filteredAttributes.length - 1].transmittableString();
+        s.append(filteredAttributes[filteredAttributes.length - 1].transmittableString());
 
-        return s;
+        return s.toString();
     }
 
     public static String toBase64String(byte[] data) {

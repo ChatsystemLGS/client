@@ -28,10 +28,8 @@ public class SignupController {
     @FXML private TextField userEmail;
     @FXML private TextField userPassword;
 
-    private UsersList users = new UsersList();
-    private Alert alert;
-    private FileChooser chooser = new FileChooser();
-    private String userProfile  = "";
+    private final UsersList users = new UsersList();
+    private final FileChooser chooser = new FileChooser();
 
     //this function will add new User to list, this function also checks if user already exits
     //it will throw error
@@ -39,6 +37,7 @@ public class SignupController {
     private void signup(ActionEvent event) throws IOException, ProtocolException {
         //if fields are empty throw error
 
+        Alert alert;
         if (userName.getText().equals("") || userEmail.getText().equals("") || userPassword.getText().equals("")) {
 
             alert = new Alert(Alert.AlertType.ERROR);
@@ -101,7 +100,7 @@ public class SignupController {
         File file = chooser.showOpenDialog(stage);
 
         if (file != null) {
-            userProfile = file.getAbsolutePath(); // TODO: image into db
+            String userProfile = file.getAbsolutePath(); // TODO: image into db
         }
     }
 }

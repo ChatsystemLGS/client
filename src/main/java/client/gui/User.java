@@ -13,15 +13,11 @@ public class User {
 
     //data members
     private String userName;
-    private String userEmail;
     private String latestMessage;
-    private String userPassword;
-    private String userProfileImage = "default.png"; // TODO: image from db
+    private String userProfileImage; // TODO: image from db
 
     public User(String userName, String userEmail, String userPassword, String userProfileImage) { // TODO: need password? & email?
         this.userName = userName;
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
         this.userProfileImage = userProfileImage;
     }
 

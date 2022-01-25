@@ -4,12 +4,12 @@ import java.sql.Timestamp;
 
 public class Message extends TransmittableObject {
 
-    private Attr<Integer> id = new Attr<>();
-    private Attr<Integer> channel = new Attr<>();
-    private Attr<Integer> author = new Attr<>();
-    private Attr<Timestamp> timestamp = new Attr<>();
-    private Attr<byte[]> data = new Attr<>();
-    private Attr<DataType> dataType = new Attr<>();
+    private final Attr<Integer> id = new Attr<>();
+    private final Attr<Integer> channel = new Attr<>();
+    private final Attr<Integer> author = new Attr<>();
+    private final Attr<Timestamp> timestamp = new Attr<>();
+    private final Attr<byte[]> data = new Attr<>();
+    private final Attr<DataType> dataType = new Attr<>();
 
     public Message() {
         registerAttributes(id, channel, author, timestamp, data, dataType);
@@ -71,7 +71,7 @@ public class Message extends TransmittableObject {
 
     public enum DataType {
 
-        TEXT, FILE_TXT, FILE_PNG, FILE_GIF, FILE_PDF;
+        TEXT, FILE_TXT, FILE_PNG, FILE_GIF, FILE_PDF
 
     }
 
