@@ -39,6 +39,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import static client.gui.SignInController.currentUserEmail;
+import static client.gui.SignInController.currentUserID;
+
 public class ChatController implements Initializable {
 
     // data members
@@ -52,9 +55,10 @@ public class ChatController implements Initializable {
     @FXML private FontAwesomeIcon close;
     @FXML private AnchorPane rootPane;
     @FXML private FontAwesomeIcon addUser;
-    @FXML HBox selectedUserChat;
-    @FXML HBox btnPanel;
+    @FXML private HBox selectedUserChat;
+    @FXML private HBox btnPanel;
     @FXML private TextField searchUser;
+    @FXML private Label loggedInUserName;
 
     // members specific to class
     private UsersList users = new UsersList();
@@ -70,6 +74,15 @@ public class ChatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        User user = null;
+        try {
+            user = getUser(currentUserID);
+        } catch (ProtocolException pe) {
+            pe.printStackTrace();
+        }
+        assert user != null;
+
+
         rootPane.setStyle(
                 "-fx-background-image:url('background.jpg');" +
                 "-fx-background-repeat: no-repeat;" +
@@ -79,14 +92,17 @@ public class ChatController implements Initializable {
 
         // set profile pic of user who is logged in
         userProfile.setFill(new ImagePattern(new Image(userProfileImage))); // TODO: DB
+        loggedInUserName.setText(user.getUserName());
 
         // selecting picture of user whose chat is opened
         userSelectedProfile.setFill(new ImagePattern(new Image(users.getUsers().get(0).getUserProfileImage())));
+        selectedUserName.setText(users.getUsers().get(0).getUserName());
 
         // TODO: create custom Event that can be fired to update the Channels
         // OR: change VBOX to ListView and update it
         createChannels();
 
+        User finalUser = user;
         // adding action listener on User Image
         userProfile.setOnMouseClicked(e -> {
             Parent root;
@@ -96,7 +112,7 @@ public class ChatController implements Initializable {
 
                 // we are sending profile data as arguments to controller
                 UserInfoController userInfoController = loader.getController();
-                userInfoController.configure(selectedUserName.getText(), users.getUsers().get(0).getLatestMessage(), "default.png");
+                userInfoController.configure(finalUser.getUserName(), currentUserEmail, finalUser.getUserProfileImage());
 
                 Stage stage = new Stage();
                 stage.setTitle("Profile");
@@ -168,6 +184,14 @@ public class ChatController implements Initializable {
         }
     }
 
+    private User getUser(int userID) throws ProtocolException {
+        String[] response = GuiUpdateInterface.getUser(userID).split(" ");
+        if (!response[0].contentEquals(ProtocolException.Status.USER_NOT_FOUND.toString())) {
+            return new User(ServerHandler.sh.base64toString(response[2]), currentUserEmail, "", "default.png"); // TODO: get img from db
+        }
+        return null;
+    }
+
     // this function will generate Msg Card and return
     private HBox msgCard_L() {
         HBox hbox = new HBox();
@@ -181,7 +205,7 @@ public class ChatController implements Initializable {
         vbox.setAlignment(Pos.TOP_LEFT);
 
         Circle userIcon = new Circle(25);
-        userIcon.setFill(new ImagePattern(new Image("default.png"))); // left
+        userIcon.setFill(new ImagePattern(new Image("default.png"))); // TODO: get img from db
 
         Label msg = new Label(msgField.getText());
         msg.setFont(new Font("Arial", 16));
@@ -216,10 +240,12 @@ public class ChatController implements Initializable {
 
         // lets generate random message from the list we have defined on top
         int index = (int) (Math.random() * (messages.length));
+
         Label msg = new Label(messages[index]);
         msg.setFont(new Font("Arial", 16));
         msg.setTextFill(Color.BLACK);
         msg.setPadding(new Insets(5, 0, 0, 50));
+
         String dateString = dateFormat.format(new Date()).toString();
         Label timeLabel = new Label(dateString);
         timeLabel.setFont(new Font("Arial", 12));
@@ -227,6 +253,7 @@ public class ChatController implements Initializable {
         timeLabel.setContentDisplay(ContentDisplay.RIGHT);
         timeLabel.setPadding(new Insets(5, 50, 0, 0));
         timeLabel.setAlignment(Pos.CENTER_RIGHT);
+
         vbox.getChildren().addAll(msg, timeLabel);
         hbox.getChildren().addAll(userIcon, vbox);
         hbox.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
