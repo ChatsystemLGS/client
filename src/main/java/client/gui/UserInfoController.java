@@ -68,5 +68,6 @@ public class UserInfoController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Erfolgreich aktualisiert");
         alert.showAndWait();
+        // TODO: Update User Information with userName.getText(), userEmail.getText() and userPassword.getText()
     }
 }
