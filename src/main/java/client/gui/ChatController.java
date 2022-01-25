@@ -83,11 +83,9 @@ public class ChatController implements Initializable {
         // selecting picture of user whose chat is opened
         userSelectedProfile.setFill(new ImagePattern(new Image(users.getUsers().get(0).getUserProfileImage())));
 
-        // dynamically populating users on screen
-        for (User user : users.getUsers()) {
-            // TODO: get latest message from DB or show note
-            scrollPane_inner.getChildren().add(createCard(user.getUserName(), "Message", user.getUserProfileImage()));
-        }
+        // TODO: create custom Event that can be fired to update the Channels
+        // OR: change VBOX to ListView and update it
+        createChannels();
 
         // adding action listener on User Image
         userProfile.setOnMouseClicked(e -> {
@@ -98,7 +96,7 @@ public class ChatController implements Initializable {
 
                 // we are sending profile data as arguments to controller
                 UserInfoController userInfoController = loader.getController();
-                userInfoController.configure(selectedUserName.getText(), users.getUsers().get(0).getUserEmail(), "default.png");
+                userInfoController.configure(selectedUserName.getText(), users.getUsers().get(0).getLatestMessage(), "default.png");
 
                 Stage stage = new Stage();
                 stage.setTitle("Profile");
@@ -131,7 +129,6 @@ public class ChatController implements Initializable {
             stage.setIconified(true);
         });
 
-
         // adding event listener on close button
         close.setOnMouseClicked(e -> {
             Stage stage = (Stage) ((FontAwesomeIcon) e.getSource()).getScene().getWindow();
@@ -163,6 +160,12 @@ public class ChatController implements Initializable {
                 ex.printStackTrace();
             }
         });
+    }
+
+    private void createChannels() {
+        for (User user : users.getUsers()) {
+            scrollPane_inner.getChildren().add(createCard(user.getUserName(), user.getLatestMessage(), user.getUserProfileImage()));
+        }
     }
 
     // this function will generate Msg Card and return
@@ -210,7 +213,7 @@ public class ChatController implements Initializable {
         vbox.setAlignment(Pos.TOP_LEFT);
         Circle userIcon = new Circle(25);
         userIcon.setFill(new ImagePattern(new Image(selectedUserImage)));
-        
+
         // lets generate random message from the list we have defined on top
         int index = (int) (Math.random() * (messages.length));
         Label msg = new Label(messages[index]);
