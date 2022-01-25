@@ -1,44 +1,55 @@
 package client.db;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Channel extends TransmittableObject {
 
-	private Attr<Integer> id = new Attr<>();
-	private Attr<ChannelType> type = new Attr<>();
-	private Attr<String> name = new Attr<>();
-	
-	public Channel() {
-		registerAttributes(id, type, name);
-	}
-	
-	public Channel withId(int id) {
-		this.id.set(id);
-		return this;
-	}
+	private final int id;
+	private final Type type;
+	private final String name;
 
-	public Channel withType(ChannelType type) {
-		this.type.set(type);
-		return this;
-	}
+	private ArrayList<Message> messages = new ArrayList<>();
 
-	public Channel withName(String name) {
-		this.name.set(name);
-		return this;
+	public Channel(int id, Type type, String name) {
+		this.id = id;
+		this.type = type;
+		this.name = name;
 	}
 
 	public int getId() {
-		return id.getValue();
+		return id;
 	}
 
-	public ChannelType getType() {
-		return type.getValue();
+	public Type getType() {
+		return type;
 	}
 
 	public String getName() {
-		return name.getValue();
+		return name;
 	}
 
-	public enum ChannelType {
-		DM, PUBLIC_GROUP, PRIVATE_GROUP
+	public Message getLatestMessage() {
+		if (messages.size() == 0)
+			return null;
+		return messages.get(0);
+	}
+
+	public void setMessages(Message[] messages) {
+		this.messages.clear();
+		this.messages.addAll(Arrays.asList(messages));
+	}
+
+	public Message[] getMessages() {
+		return messages.toArray(new Message[messages.size()]);
+	}
+
+	public enum Type {
+		DM, PRIVATE_GROUP, PUBLIC_GROUP
+	}
+
+	public void addMessage(Message message) {
+		messages.add(message);
 	}
 
 }
