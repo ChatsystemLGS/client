@@ -32,6 +32,7 @@ public class SignInController {
     @FXML private Button signIn;
 
     public static int currentUserID;
+    public static String currentUserEmail;
 
     @FXML
     private void openMainScreen(ActionEvent event){
@@ -41,6 +42,7 @@ public class SignInController {
 
             if (response.split(" ")[0].equals(ProtocolException.Status.OK.toString())) {
                 currentUserID = Integer.parseInt(response.split(" ")[1]);
+                currentUserEmail = userEmail.getText();
 
                 fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/ChatScreen.fxml")));
 
