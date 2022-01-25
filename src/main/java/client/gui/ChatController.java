@@ -2,6 +2,7 @@ package client.gui;
 
 import client.ProtocolException;
 import client.ServerHandler;
+import client.db.Message;
 import client.interfaces.GuiInterface;
 import client.interfaces.GuiUpdateInterface;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -98,6 +99,8 @@ public class ChatController implements Initializable {
         userSelectedProfile.setFill(new ImagePattern(new Image(users.getUsers().get(0).getUserProfileImage())));
         selectedUserName.setText(users.getUsers().get(0).getUserName());
 
+        // load messages oh whose chat is open
+
         // TODO: create custom Event that can be fired to update the Channels
         // OR: change VBOX to ListView and update it
         createChannels();
@@ -133,9 +136,32 @@ public class ChatController implements Initializable {
         // msg will be sent by pressing enter key
         msgField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                msgContainer.getChildren().add(msgCard_R());
-                msgContainer.getChildren().add(msgCard_L()); // TODO: remove
-                msgField.setText("");
+
+                int channelID = getChannelId();
+                byte[] data = msgField.getText().getBytes();
+                Message.DataType dataType = Message.DataType.TEXT;
+                try {
+                    String response = GuiInterface.sendMessage(channelID, data, dataType);
+                    if (response.contentEquals(ProtocolException.Status.OK.toString())) {
+                        msgContainer.getChildren().add(msgCard_R());
+                        msgContainer.getChildren().add(msgCard_L()); // TODO: remove
+                        msgField.clear();
+                    } else if (response.contentEquals(ProtocolException.Status.CHANNEL_NOT_FOUND.toString())) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Channel nicht gefunden");
+                        alert.setContentText("Channel nicht gefunden! Dieser Channel existiert nicht mehr.");
+                        alert.showAndWait();
+                    } else if (response.contentEquals(ProtocolException.Status.MESSAGE_TOO_LONG.toString())) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Nachricht zu lang");
+                        alert.setContentText("Nachricht zu lang! Bitte kürze deine Nachricht ung versuche es erneut.");
+                        alert.showAndWait();
+                    } else {
+                        throw ProtocolException.getException(response);
+                    }
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -178,6 +204,11 @@ public class ChatController implements Initializable {
         });
     }
 
+    // TODO: implement DB/server methods
+    private int getChannelId() {
+        return 1;
+    }
+
     private void createChannels() {
         for (User user : users.getUsers()) {
             scrollPane_inner.getChildren().add(createCard(user.getUserName(), user.getLatestMessage(), user.getUserProfileImage()));
@@ -207,7 +238,8 @@ public class ChatController implements Initializable {
         Circle userIcon = new Circle(25);
         userIcon.setFill(new ImagePattern(new Image("default.png"))); // TODO: get img from db
 
-        Label msg = new Label(msgField.getText());
+        int index = (int) (Math.random() * (messages.length));
+        Label msg = new Label(messages[index]); // TODO: get from db
         msg.setFont(new Font("Arial", 16));
         msg.setTextFill(Color.BLACK);
 
@@ -238,10 +270,7 @@ public class ChatController implements Initializable {
         Circle userIcon = new Circle(25);
         userIcon.setFill(new ImagePattern(new Image(selectedUserImage)));
 
-        // lets generate random message from the list we have defined on top
-        int index = (int) (Math.random() * (messages.length));
-
-        Label msg = new Label(messages[index]);
+        Label msg = new Label(msgField.getText());
         msg.setFont(new Font("Arial", 16));
         msg.setTextFill(Color.BLACK);
         msg.setPadding(new Insets(5, 0, 0, 50));
@@ -297,7 +326,8 @@ public class ChatController implements Initializable {
         ban.setOnMouseClicked(e -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Remove Friend");
-            alert.setContentText("Are you sure to block " + userName.getText());
+            alert.setContentText(userName.getText() + " blockiert.");
+            // GuiInterface.block(userID); TODO: implement way to get userID
             alert.showAndWait();
         });
         ban.setGlyphName("BAN");
