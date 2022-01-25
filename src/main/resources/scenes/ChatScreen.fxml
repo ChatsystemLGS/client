@@ -7,66 +7,57 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0"
-            prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.ChatController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.ChatController">
     <children>
-        <VBox fx:id="sidePane" prefHeight="600.0" prefWidth="303.0" spacing="10.0" styleClass="borderStyle"
-              stylesheets="@../style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox fx:id="sidePane" prefHeight="600.0" prefWidth="303.0" spacing="10.0" styleClass="borderStyle" stylesheets="@../style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <HBox fx:id="hbox_sidePane" alignment="CENTER_LEFT" prefHeight="95.0" prefWidth="301.0" spacing="10.0"
-                      stylesheets="@../style.css">
+                <HBox fx:id="hbox_sidePane" alignment="CENTER_LEFT" prefHeight="95.0" prefWidth="301.0" spacing="10.0" stylesheets="@../style.css">
                     <children>
-                        <Circle fx:id="userProfile" fill="DODGERBLUE" radius="30.0" stroke="BLACK" strokeType="INSIDE"/>
+                        <Circle fx:id="userProfile" fill="DODGERBLUE" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
                         <Label fx:id="loggedInUserName" text="" textFill="WHITE">
                             <font>
-                                <Font name="Arial Bold" size="18.0"/>
+                                <Font name="Arial Bold" size="18.0" />
                             </font>
                             <HBox.margin>
-                                <Insets/>
+                                <Insets />
                             </HBox.margin>
                         </Label>
                         <FontAwesomeIcon fill="WHITE" glyphName="ELLIPSIS_H" size="2em">
                             <HBox.margin>
-                                <Insets left="40.0"/>
+                                <Insets left="40.0" />
                             </HBox.margin>
                         </FontAwesomeIcon>
                         <!--                        <FontAwesomeIconView />-->
                     </children>
                     <VBox.margin>
-                        <Insets/>
+                        <Insets />
                     </VBox.margin>
                     <padding>
-                        <Insets left="10.0"/>
+                        <Insets left="10.0" />
                     </padding>
                 </HBox>
-                <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="499.0" prefWidth="304.0"
-                            stylesheets="@../style.css">
+                <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="499.0" prefWidth="304.0" stylesheets="@../style.css">
                     <content>
                         <VBox fx:id="scrollPane_inner" prefHeight="498.0" prefWidth="302.0">
                             <children>
-                                <HBox fx:id="searchContainer" alignment="CENTER_LEFT" prefHeight="47.0"
-                                      prefWidth="257.0" styleClass="searchContainer" stylesheets="@../style.css">
+                                <HBox fx:id="searchContainer" alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="257.0" styleClass="searchContainer" stylesheets="@../style.css">
                                     <children>
-                                        <FontAwesomeIcon fx:id="searchIcon" fill="#ffffff4d" glyphName="SEARCH"
-                                                         size="1.5em"/>
-                                        <TextField fx:id="searchUser" prefHeight="24.0" prefWidth="181.0"
-                                                   promptText="Freund hinzufügen" styleClass="searchUser"
-                                                   stylesheets="@../style.css">
+                                        <FontAwesomeIcon fx:id="searchIcon" fill="#ffffff4d" glyphName="SEARCH" size="1.5em" />
+                                        <TextField fx:id="searchUser" prefHeight="24.0" prefWidth="181.0" promptText="Freund hinzufügen" styleClass="searchUser" stylesheets="@../style.css">
                                             <font>
-                                                <Font name="Arial" size="18.0"/>
+                                                <Font name="Arial" size="18.0" />
                                             </font>
                                         </TextField>
-                                        <FontAwesomeIcon fx:id="addUser" fill="WHITE" glyphName="USER_PLUS" size="2em"/>
+                                        <FontAwesomeIcon fx:id="addUser" fill="WHITE" glyphName="USER_PLUS" size="2em" />
                                     </children>
                                     <padding>
-                                        <Insets left="20.0"/>
+                                        <Insets left="20.0" />
                                     </padding>
                                     <opaqueInsets>
-                                        <Insets left="10.0"/>
+                                        <Insets left="10.0" />
                                     </opaqueInsets>
                                     <VBox.margin>
-                                        <Insets left="10.0" right="20.0" top="5.0"/>
+                                        <Insets left="10.0" right="20.0" top="5.0" />
                                     </VBox.margin>
                                 </HBox>
                             </children>
@@ -75,107 +66,94 @@
                 </ScrollPane>
             </children>
         </VBox>
-        <VBox layoutX="302.0" layoutY="-1.0" prefHeight="600.0" prefWidth="699.0" AnchorPane.bottomAnchor="1.0"
-              AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="-1.0">
+        <VBox fx:id="outerVBOX" layoutX="302.0" layoutY="-1.0" prefHeight="600.0" prefWidth="699.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="-1.0">
             <children>
-                <HBox fx:id="selectedUserChat" alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="699.0"
-                      spacing="10.0" stylesheets="@../style.css">
+                <HBox fx:id="selectedUserChat" alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="699.0" spacing="10.0" stylesheets="@../style.css">
                     <children>
-                        <Circle fx:id="userSelectedProfile" fill="DODGERBLUE" radius="25.0" stroke="BLACK"
-                                strokeType="INSIDE"/>
-                        <Label fx:id="selectedUserName" prefHeight="21.0" prefWidth="214.0"
-                               textFill="WHITE">
+                        <Circle fx:id="userSelectedProfile" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Label fx:id="selectedUserName" prefHeight="21.0" prefWidth="214.0" textFill="WHITE">
                             <font>
-                                <Font name="Arial Bold" size="18.0"/>
+                                <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Label>
-                        <VBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0"
-                              HBox.hgrow="ALWAYS">
+                        <VBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                             <children>
-                                <HBox fx:id="btnPanel" prefHeight="100.0" prefWidth="200.0" spacing="10.0"
-                                      VBox.vgrow="ALWAYS">
+                                <HBox fx:id="btnPanel" prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
                                     <children>
-                                        <FontAwesomeIcon fx:id="minimize" fill="WHITE" glyphName="MINUS" size="1.5em"/>
+                                        <FontAwesomeIcon fx:id="minimize" fill="WHITE" glyphName="MINUS" size="1.5em" />
                                         <FontAwesomeIcon fx:id="close" fill="WHITE" glyphName="CLOSE" size="1.5em">
                                             <HBox.margin>
-                                                <Insets/>
+                                                <Insets />
                                             </HBox.margin>
                                         </FontAwesomeIcon>
                                     </children>
                                     <VBox.margin>
-                                        <Insets left="200.0" top="-10.0"/>
+                                        <Insets left="200.0" top="-10.0" />
                                     </VBox.margin>
                                 </HBox>
-                                <HBox alignment="CENTER" prefHeight="66.0" prefWidth="223.0"
-                                      styleClass="searchContainer" stylesheets="@../style.css" VBox.vgrow="ALWAYS">
+                                <HBox alignment="CENTER" prefHeight="66.0" prefWidth="223.0" styleClass="searchContainer" stylesheets="@../style.css" VBox.vgrow="ALWAYS">
                                     <children>
-                                        <FontAwesomeIcon fx:id="searchIcon1" fill="#ffffff4d" glyphName="SEARCH"
-                                                         size="1.5em" HBox.hgrow="ALWAYS"/>
-                                        <TextField prefHeight="67.0" prefWidth="176.0" promptText="Search"
-                                                   style="-fx-background-radius: 15;" styleClass="searchUser"
-                                                   stylesheets="@../style.css" HBox.hgrow="ALWAYS">
+                                        <FontAwesomeIcon fx:id="searchIcon1" fill="#ffffff4d" glyphName="SEARCH" size="1.5em" HBox.hgrow="ALWAYS" />
+                                        <TextField prefHeight="67.0" prefWidth="176.0" promptText="Search" style="-fx-background-radius: 15;" styleClass="searchUser" stylesheets="@../style.css" HBox.hgrow="ALWAYS">
                                             <font>
-                                                <Font size="18.0"/>
+                                                <Font size="18.0" />
                                             </font>
                                         </TextField>
                                     </children>
                                     <padding>
-                                        <Insets left="30.0"/>
+                                        <Insets left="30.0" />
                                     </padding>
                                     <VBox.margin>
-                                        <Insets right="30.0"/>
+                                        <Insets right="30.0" />
                                     </VBox.margin>
                                 </HBox>
                             </children>
                             <HBox.margin>
-                                <Insets left="150.0"/>
+                                <Insets left="150.0" />
                             </HBox.margin>
                         </VBox>
                     </children>
                     <VBox.margin>
-                        <Insets/>
+                        <Insets />
                     </VBox.margin>
                     <padding>
-                        <Insets bottom="20.0" left="10.0" top="20.0"/>
+                        <Insets bottom="20.0" left="10.0" top="20.0" />
                     </padding>
                 </HBox>
                 <ScrollPane fx:id="msgContainer_ScrollPane" prefHeight="438.0" prefWidth="697.0" VBox.vgrow="ALWAYS">
                     <content>
                         <VBox fx:id="msgContainer" prefHeight="437.0" prefWidth="679.0" stylesheets="@../style.css">
                             <padding>
-                                <Insets left="10.0" top="20.0"/>
+                                <Insets left="10.0" top="20.0" />
                             </padding>
                         </VBox>
                     </content>
                 </ScrollPane>
-                <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="653.0" spacing="10.0"
-                      styleClass="searchContainer" stylesheets="@../style.css">
+                <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="653.0" spacing="10.0" styleClass="searchContainer" stylesheets="@../style.css">
                     <children>
-                        <TextField fx:id="msgField" alignment="CENTER" prefHeight="50.0" prefWidth="563.0"
-                                   promptText="Write Here" style="-fx-background-radius: 15;" styleClass="searchUser"
-                                   stylesheets="@../style.css" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="msgField" alignment="CENTER" prefHeight="50.0" prefWidth="563.0" promptText="Write Here" style="-fx-background-radius: 15;" styleClass="searchUser" stylesheets="@../style.css" HBox.hgrow="ALWAYS">
                             <padding>
-                                <Insets bottom="5.0"/>
+                                <Insets bottom="5.0" />
                             </padding>
                             <HBox.margin>
-                                <Insets left="5.0"/>
+                                <Insets left="5.0" />
                             </HBox.margin>
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </TextField>
                         <FontAwesomeIcon fx:id="searchIcon11" fill="#ffffff4d" glyphName="PAPERCLIP" size="2em">
                             <HBox.margin>
-                                <Insets/>
+                                <Insets />
                             </HBox.margin>
                         </FontAwesomeIcon>
                         <!--                        <FontAwesomeIconView glyphName="FILE" />-->
                     </children>
                     <padding>
-                        <Insets left="10.0" right="20.0" top="5.0"/>
+                        <Insets left="10.0" right="20.0" top="5.0" />
                     </padding>
                     <VBox.margin>
-                        <Insets bottom="5.0" left="30.0" right="30.0" top="5.0"/>
+                        <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                     </VBox.margin>
                 </HBox>
             </children>
