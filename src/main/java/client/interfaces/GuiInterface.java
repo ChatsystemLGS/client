@@ -41,7 +41,7 @@ public interface GuiInterface {
         potential status codes  : CHANNEL_NOT_FOUND
          */
     }
-    
+
     static String createGoup(String channelName) throws ProtocolException {
         return sh.execute(Session.Command.CREATEGROUP, channelName);
 
@@ -52,7 +52,7 @@ public interface GuiInterface {
         potential status codes  : none
          */
     }
-    
+
     static String addToGroup(int channelID, int userID) throws ProtocolException {
         return sh.execute(Session.Command.ADDTOGROUP, channelID, userID);
 
@@ -85,7 +85,7 @@ public interface GuiInterface {
         potential status codes  : CHANNEL_NOT_FOUND
          */
     }
-    
+
     static String createDM(int userID) throws ProtocolException {
         return sh.execute(Session.Command.CREATEDM, userID);
 
@@ -96,7 +96,7 @@ public interface GuiInterface {
         potential status codes  : USER_NOT_FOUND
          */
     }
-    
+
     static String addFriend(int userID) throws ProtocolException {
         return sh.execute(Session.Command.ADDFRIEND, userID);
 

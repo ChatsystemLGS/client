@@ -6,7 +6,7 @@ import client.db.User;
 
 import java.sql.Timestamp;
 
-//! sketch... not working just an idea
+//! concept... not working just an idea
 public class MessagesUpdater implements Runnable {
 
     User u;

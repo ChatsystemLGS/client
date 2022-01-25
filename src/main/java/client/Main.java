@@ -22,7 +22,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/Main.fxml")));
         primaryStage.setTitle("Chat Application");
-        
+
         Scene scene = new Scene(root);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
@@ -45,10 +45,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-        // backend
         new Client(Config.getDefaultConfig());
-
-        // GUI
         launch(args);
     }
 }

@@ -11,68 +11,75 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="480.0" styleClass="blue-panel" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.UserInfoController">
-   <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-         <children>
-            <FontAwesomeIcon fx:id="back" fill="WHITE" glyphName="ARROW_LEFT" size="2em">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </FontAwesomeIcon>
-            <Label prefHeight="35.0" prefWidth="105.0" text="Profile" textFill="#2196f3">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Circle fx:id="userProfile" fill="DODGERBLUE" radius="44.0" stroke="BLACK" strokeType="INSIDE">
-               <HBox.margin>
-                  <Insets left="160.0" right="10.0" />
-               </HBox.margin>
-            </Circle>
-            <FontAwesomeIcon fill="WHITE" glyphName="EDIT" size="2em" />
-         </children>
-         <padding>
-            <Insets left="20.0" />
-         </padding>
-      </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
-         <children>
-            <TextField fx:id="userName" promptText="Name" style="-fx-text-fill: white;" styleClass="tf_box" HBox.hgrow="ALWAYS">
-               <font>
-                  <Font size="18.0" />
-               </font></TextField>
-            <FontAwesomeIcon fill="WHITE" glyphName="EDIT" size="2em" />
-         </children>
-         <VBox.margin>
-            <Insets left="15.0" right="15.0" top="20.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
-         <children>
-            <TextField fx:id="userEmail" promptText="E-Mail" style="-fx-text-fill: white;" styleClass="tf_box" HBox.hgrow="ALWAYS" />
-            <FontAwesomeIcon fill="WHITE" glyphName="EDIT" size="2em" />
-         </children>
-         <VBox.margin>
-            <Insets left="15.0" right="15.0" top="15.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
-         <children>
-            <PasswordField fx:id="userPassword" promptText="********" styleClass="tf_box" HBox.hgrow="ALWAYS" />
-            <FontAwesomeIcon fill="WHITE" glyphName="LOCK" size="2em" />
-         </children>
-         <VBox.margin>
-            <Insets left="15.0" right="15.0" top="20.0" />
-         </VBox.margin>
-      </HBox>
-      <Button mnemonicParsing="false" onAction="#update" prefHeight="38.0" prefWidth="456.0" styleClass="blue-btn" text="Update" textFill="WHITE">
-         <font>
-            <Font size="17.0" />
-         </font>
-         <VBox.margin>
-            <Insets left="15.0" right="15.0" top="20.0" />
-         </VBox.margin>
-      </Button>
-   </children>
+<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="480.0" prefWidth="480.0" styleClass="blue-panel" stylesheets="@../style.css"
+      xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="client.gui.UserInfoController">
+    <children>
+        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+            <children>
+                <FontAwesomeIcon fx:id="back" fill="WHITE" glyphName="ARROW_LEFT" size="2em">
+                    <HBox.margin>
+                        <Insets/>
+                    </HBox.margin>
+                </FontAwesomeIcon>
+                <Label prefHeight="35.0" prefWidth="105.0" text="Profile" textFill="#2196f3">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Circle fx:id="userProfile" fill="DODGERBLUE" radius="44.0" stroke="BLACK" strokeType="INSIDE">
+                    <HBox.margin>
+                        <Insets left="160.0" right="10.0"/>
+                    </HBox.margin>
+                </Circle>
+                <FontAwesomeIcon fill="WHITE" glyphName="EDIT" size="2em"/>
+            </children>
+            <padding>
+                <Insets left="20.0"/>
+            </padding>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
+            <children>
+                <TextField fx:id="userName" promptText="Name" style="-fx-text-fill: white;" styleClass="tf_box"
+                           HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </TextField>
+                <FontAwesomeIcon fill="WHITE" glyphName="EDIT" size="2em"/>
+            </children>
+            <VBox.margin>
+                <Insets left="15.0" right="15.0" top="20.0"/>
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
+            <children>
+                <TextField fx:id="userEmail" promptText="E-Mail" style="-fx-text-fill: white;" styleClass="tf_box"
+                           HBox.hgrow="ALWAYS"/>
+                <FontAwesomeIcon fill="WHITE" glyphName="EDIT" size="2em"/>
+            </children>
+            <VBox.margin>
+                <Insets left="15.0" right="15.0" top="15.0"/>
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
+            <children>
+                <PasswordField fx:id="userPassword" promptText="********" styleClass="tf_box" HBox.hgrow="ALWAYS"/>
+                <FontAwesomeIcon fill="WHITE" glyphName="LOCK" size="2em"/>
+            </children>
+            <VBox.margin>
+                <Insets left="15.0" right="15.0" top="20.0"/>
+            </VBox.margin>
+        </HBox>
+        <Button mnemonicParsing="false" onAction="#update" prefHeight="38.0" prefWidth="456.0" styleClass="blue-btn"
+                text="Update" textFill="WHITE">
+            <font>
+                <Font size="17.0"/>
+            </font>
+            <VBox.margin>
+                <Insets left="15.0" right="15.0" top="20.0"/>
+            </VBox.margin>
+        </Button>
+    </children>
 </VBox>

@@ -70,21 +70,21 @@ public class ServerHandler implements Runnable {
     }
 
     public String readLine() {
-		String line = s.nextLine();
-		SimpleLogger.logf(LogLevel.DEBUG, "server: > %s", line);
-		return line;
-	}
+        String line = s.nextLine();
+        SimpleLogger.logf(LogLevel.DEBUG, "server: > %s", line);
+        return line;
+    }
 
-	public void writeLine(String line) {
-		SimpleLogger.logf(LogLevel.DEBUG, "server: < %s", line);
-		pw.println(line);
-	}
+    public void writeLine(String line) {
+        SimpleLogger.logf(LogLevel.DEBUG, "server: < %s", line);
+        pw.println(line);
+    }
 
     public static void createClient(Socket server, Client client) throws IOException, ProtocolException {
-		sh = new ServerHandler(server, client);
+        sh = new ServerHandler(server, client);
         new Thread(sh).start();
         // new ServerHandler(server, client);
-	}
+    }
 
     public String execute(Session.Command cmd, Object... parameters) throws ProtocolException {
 

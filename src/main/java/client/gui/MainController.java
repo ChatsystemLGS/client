@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
     This class is a controller class that will toggle in sign up and sign in form and also
     navigate to main chat screen
  */
-public class MainController implements Initializable {
+public class MainController implements Initializable { //! some bug that SignUp.fxml is not showing... investigate
 
     // data members
     @FXML
@@ -27,7 +27,7 @@ public class MainController implements Initializable {
     private Parent fxml;
     private Alert alert;
 
-    // implementing Initializable Interface here, so that as soon as modal loads up that will run
+    // implementing Initialize Interface here, so that as soon as modal loads up that will run
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         TranslateTransition t = new TranslateTransition(Duration.seconds(1), vbox);

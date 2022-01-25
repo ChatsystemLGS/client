@@ -14,7 +14,7 @@ public interface GuiUpdateInterface {
     static String getUserIdFromEmail(String userEmail) throws ProtocolException {
         return GuiUpdateInterface.getUser(userEmail);
     }
-    
+
     static String getPublicGroups() throws ProtocolException {
         return sh.execute(Session.Command.GETPUBLICGROUPS);
 
@@ -25,7 +25,7 @@ public interface GuiUpdateInterface {
         potential status codes  : none
          */
     }
-    
+
     static String getChannels() throws ProtocolException {
         return sh.execute(Session.Command.GETCHANNELS);
 
@@ -36,7 +36,7 @@ public interface GuiUpdateInterface {
         potential status codes  : none
          */
     }
-    
+
     static String getChannelMembers(int channelID) throws ProtocolException {
         return sh.execute(Session.Command.GETCHANNELMEMBERS, channelID);
 
@@ -47,7 +47,7 @@ public interface GuiUpdateInterface {
         potential status codes  : CHANNEL_NOT_FOUND
          */
     }
-    
+
     static String getUser(String emailAddress) throws ProtocolException {
         return sh.execute(Session.Command.GETUSER, emailAddress);
 
@@ -80,7 +80,7 @@ public interface GuiUpdateInterface {
         potential status codes  : none
          */
     }
-    
+
     static String receiveMessages(int channelID, Timestamp tFrom, Timestamp tUntil) throws ProtocolException {
         return sh.execute(Session.Command.RECEIVEMESSAGES, channelID, tFrom, tUntil);
 

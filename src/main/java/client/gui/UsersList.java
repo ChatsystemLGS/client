@@ -162,7 +162,7 @@ public class UsersList {
         }
     }
 
-    //method overrided
+    //method override
     public void addUser(User user) {
         if (!exists(user)) {
             this.users.add(user);

@@ -10,6 +10,7 @@ package client.gui;
 import java.util.Objects;
 
 public class User {
+
     //data members
     private String userName;
     private String userEmail;
