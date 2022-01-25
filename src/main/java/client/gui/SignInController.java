@@ -31,13 +31,16 @@ public class SignInController {
     @FXML private TextField userPassword;
     @FXML private Button signIn;
 
+    public static int currentUserID;
+
     @FXML
     private void openMainScreen(ActionEvent event){
         try {
             Alert a = new Alert(Alert.AlertType.ERROR);
             String response = GuiInterface.login(userEmail.getText(), userPassword.getText());
 
-            if (response.equals(ProtocolException.Status.OK.toString())) {
+            if (response.split(" ")[0].equals(ProtocolException.Status.OK.toString())) {
+                currentUserID = Integer.parseInt(response.split(" ")[1]);
 
                 fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/ChatScreen.fxml")));
 
@@ -52,13 +55,13 @@ public class SignInController {
                 stage.show();
                 ((Node)(event.getSource())).getScene().getWindow().hide();
 
-            } else if (GuiInterface.login(userEmail.getText(), userPassword.getText()).equals(ProtocolException.Status.EMAIL_NOT_REGISTERED.toString())) {
+            } else if (response.split(" ")[0].equals(ProtocolException.Status.EMAIL_NOT_REGISTERED.toString())) {
 
                 a.setTitle("E-Mail nicht registriert");
                 a.setContentText("E-Mail nicht registriert! Bitte erstelle zuerst einen Account.");
                 a.show();
 
-            } else if (response.equals(ProtocolException.Status.PASSWORD_INVALID.toString())) {
+            } else if (response.split(" ")[0].equals(ProtocolException.Status.PASSWORD_INVALID.toString())) {
 
                 a.setTitle("Passwort falsch");
                 a.setContentText("Passwort falsch! Bitte probiere es erneut.");
