@@ -38,7 +38,7 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
          <children>
-            <TextField fx:id="userName" promptText="Mary Janes" style="-fx-text-fill: white;" styleClass="tf_box" HBox.hgrow="ALWAYS">
+            <TextField fx:id="userName" promptText="Name" style="-fx-text-fill: white;" styleClass="tf_box" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="18.0" />
                </font></TextField>
@@ -50,7 +50,7 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
          <children>
-            <TextField fx:id="userEmail" promptText="Mary@yahoo.com" style="-fx-text-fill: white;" styleClass="tf_box" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="userEmail" promptText="E-Mail" style="-fx-text-fill: white;" styleClass="tf_box" HBox.hgrow="ALWAYS" />
             <FontAwesomeIcon fill="WHITE" glyphName="EDIT" size="2em" />
          </children>
          <VBox.margin>

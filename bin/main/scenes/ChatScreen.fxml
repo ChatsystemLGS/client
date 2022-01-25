@@ -18,7 +18,7 @@
                       stylesheets="@../style.css">
                     <children>
                         <Circle fx:id="userProfile" fill="DODGERBLUE" radius="30.0" stroke="BLACK" strokeType="INSIDE"/>
-                        <Label text="John Belford" textFill="WHITE">
+                        <Label fx:id="loggedInUserName" text="" textFill="WHITE">
                             <font>
                                 <Font name="Arial Bold" size="18.0"/>
                             </font>
@@ -83,7 +83,7 @@
                     <children>
                         <Circle fx:id="userSelectedProfile" fill="DODGERBLUE" radius="25.0" stroke="BLACK"
                                 strokeType="INSIDE"/>
-                        <Label fx:id="selectedUserName" prefHeight="21.0" prefWidth="214.0" text="Mary Jane"
+                        <Label fx:id="selectedUserName" prefHeight="21.0" prefWidth="214.0"
                                textFill="WHITE">
                             <font>
                                 <Font name="Arial Bold" size="18.0"/>
