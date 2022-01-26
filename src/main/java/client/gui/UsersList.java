@@ -37,7 +37,6 @@ public class UsersList {
 
                 try {
                     latestMessage = c.getLatestMessage().getDataType().equals(Message.DataType.TEXT) ? Arrays.toString(c.getLatestMessage().getData()) : "Datei";
-                    System.out.println(15151515);
                 } catch (NullPointerException ignored) {
                     // latestMessage is null -> remains ""
                 } catch (Exception ex) {
