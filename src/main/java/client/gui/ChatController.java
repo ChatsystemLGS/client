@@ -100,7 +100,7 @@ public class ChatController implements Initializable {
         userSelectedProfile.setFill(new ImagePattern(new Image(users.getUsers().get(0).getUserProfileImage())));
         selectedUserName.setText(users.getUsers().get(0).getUserName());
 
-        // load messages oh whose chat is open
+        // TODO: load messages of whose chat is open
 
         // TODO: create custom Event that can be fired to update the Channels
         // OR: change VBOX to ListView and update it
@@ -310,6 +310,7 @@ public class ChatController implements Initializable {
         vbox.setPrefSize(178, 61);
 
         Label userName = new Label(un);
+
         // now we will add action listener to handle clicks on user Card
         userName.setOnMouseClicked(e -> {
             userSelectedProfile.setFill(new ImagePattern(new Image(img)));
